@@ -1,0 +1,7 @@
+node_modules/
+public/components
+.sass-cache
+/tmp/*
+/public/avatar/*.jpg
+/public/pdf/*.pdf
+config/config.js
