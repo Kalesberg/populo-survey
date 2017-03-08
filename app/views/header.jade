@@ -1,0 +1,83 @@
+header#mainMenu.navbar.navbar-default.navbar-fixed-top.global
+    .col-xs-6
+      a#hamburger-menu.header-icon.pull-left(href='#')
+          svg#h-menu(version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', x='0px', y='0px', width='24', height='20', viewbox='0 0 24 24', style='enable-background:new 0 0 24 24;', xml:space='preserve')
+            g(style='fill: currentColor')
+              rect#XMLID_5_(y='3', width='24', height='2.4')
+              rect#XMLID_4_(y='18.8', width='24', height='2.4')
+              rect#XMLID_3_(y='10.9', width='24', height='2.4')
+      nav.sidebar
+        .widget-header
+          img(src='/img/populo-logo.svg', width='110', height='35', alt='populo logo')
+          span#close-sidebar.pull-right
+            img(src='/img/back-icon.svg', width='12', height='12')  
+        ul.list-unstyled
+          li
+            a(href='/dashboard')
+              img(src='/img/svg-icons/dashboard-icon-blue.svg', width='35', height='35')
+              |  My Dashboard
+          if (user.role == 'HR Manager') 
+            - var insightsPath = 'hr-insights'
+          else if (user.role == 'Manager')
+            - var insightsPath = 'manager-insights'
+          else
+            - var insightsPath = 'teamleader-insights'
+          if (user.role == 'HR Manager' || user.role == 'Manager' || user.role == 'Leader' )
+            li
+              a(href='/#{insightsPath}')
+                img(src='/img/insights-icon-b.svg', width='35', height='35')
+                |  My Insights
+            li
+              a(href='/analytics')
+                img(src='/img/analytics-icon.svg', width='35', height='35')
+                |  My Analytics      
+            li
+              a(href='/admin')
+                img(src='/img/administration-icon-b.svg', width='35', height='35')
+                |  Administration              
+    #mask.mask           
+    
+    .col-xs-6
+      ul.avatar-wrapper
+        li.dropdown
+          if notifications_popup
+            a#nDropDown(data-toggle='dropdown', href='#')
+              - var hide_notification_number = notifications_popup.length == 0 ? 'hide' : ''
+              - var hide_notification_li = notifications_popup.length == 0 ? '' : 'hide'
+              span(class='new-responses-number-wrapper #{hide_notification_number}') #{notifications_popup.length}
+              img(src='/img/notifications-icon.svg')
+            ul#n-menu.dropdown-menu.n-dropdown-menu.dropdown-menu-right.notifications-wrapper.mCustomScrollbar(data-mcs-theme='gray-theme')
+              li(class='no_notification #{hide_notification_li}')
+                .n-msg-wrapper
+                  .n-title No notifications
+              each notification in notifications_popup
+                li
+                  a(href= notification.url)
+                    .n-icon
+                      img(src='/img/avatar-b-small.svg', width='45', height='45')
+                    .n-msg-wrapper
+                      .n-title= notification.title
+                      .n-text= notification.text
+                      .n-date= notification.created_at
+        li.dropdown
+          a#profile-menu(data-toggle='dropdown', href='#')
+            .tile-avatar.avatar-border
+              img(src='#{user.avatar}')
+            #userMenu
+              img(src='/img/menu-dots-icon.svg')
+          ul#profileD-wrapper.dropdown-menu.dropdown-menu-right.menuD(aria-labelledby='profile-menu')
+            //li
+              a(href='#')
+                img(src='/img/settings-icon-blue.svg', width='35', height='35')
+                |  Settings
+            //li
+              a(href='#')
+                img(src='/img/my-profile-icon-blue.svg', width='35', height='35')
+                |  My Profile
+            li
+              a(href='/logout')
+                img(src='/img/logout-icon-blue.svg', width='35', height='35')
+                |  Logout  
+
+  
+  

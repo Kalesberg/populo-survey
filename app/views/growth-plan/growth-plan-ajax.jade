@@ -1,0 +1,145 @@
+.goals-list-wrapper
+  ul.goals-wrapper
+    if items.length == 0
+      div.text-center.no-data
+        strong You currently don't have any goals.
+    each item, index in items
+      li(data-g-id='#{item._id}')
+        .goal
+          .goal-header
+            span.goal-type  
+              if item.type == 'Personal'
+                img(src='/img/personal-icon-gn.svg', width='20', height='20', alt='#{item.type} Goal', data-hover='tooltip', data-placement='top', title='#{item.type} Goal')
+              else 
+                img(src='/img/organizational-icon.svg', width='20', height='20', alt='#{item.type} Goal', data-hover='tooltip', data-placement='top', title='#{item.type} Goal')
+            .goal-avatar-wrapper(data-hover='tooltip', data-placement='top', title='#{item.userName}')      
+              .goal-avatar.tile-avatar.avatar-border
+                img(src='/img/avatar-f-big.svg')
+            .goal-info-wrapper    
+              .goal-title.text-capitalize      
+                strong #{item.goal}
+              .goal-date
+                img(src='/img/calendar-icon-s.svg', width='15', height='15', alt='calendar icon')
+                | #{item.expiry_date}
+                | #{item.dateNow}
+            if item.childDetails.length > 0
+              .right-wrapper.text-right      
+                span(data-toggle='collapse', data-target='#goal-expanded-#{item._id}')
+                  img(src='/img/expand-arrow.svg', width='15', height='15', alt='collapse icon')
+          .goal-timeline
+            case item.status
+                when 'Accomplished'
+                    - var progressClass = 'progress-green'
+                    - var progressVal = 100
+                when 'In progress' 
+                    - var progressClass = 'progress-yellow'
+                    - var progressVal = item.progress
+                when 'Not started' 
+                    - var progressClass = ''
+                    - var progressVal = 100
+                when 'No longer relevant' 
+                    - var progressClass = 'progress-red'
+                    - var progressVal = 100
+                default
+                    - var progressClass = ''
+            if item.overdue && item.status == 'In progress' || item.overdue && item.status == 'Not started'
+              - var progressClass = 'progress-red'
+              - var progressVal = 100
+            else if item.overdue && item.status == 'Accomplished' || item.overdue && item.status == 'No longer relevant'
+              - var progressClass = 'progress-green'
+              - var progressVal = 100  
+            .timeline
+              .progress
+                .progress-bar.progress-bar-success(class='#{progressClass}', role='progressbar', aria-valuenow='#{progressVal}', aria-valuemin='0', aria-valuemax='100', style='width:#{progressVal}%', data-toggle='tooltip', data-placement='top', title='#{progressVal}%')
+                  span.sr-only #{item.progress}% Complete
+          if item.childDetails.length > 0
+            .collapse(id='goal-expanded-#{item._id}')
+              .child-goals-list-wrapper
+                ul
+                  each subitem in item.childDetails
+                    li(data-g-id='#{subitem._id}', data-g-t='child')
+                      .goal
+                        .goal-header
+                          span.goal-type  
+                            if subitem.type == 'Personal'
+                              img(src='/img/personal-icon-gn.svg', width='20', height='20', alt='#{subitem.type} Goal', data-hover='tooltip', data-placement='top', title='#{subitem.type} Goal')
+                            else 
+                              img(src='/img/organizational-icon.svg', width='20', height='20', alt='#{subitem.type} Goal', data-hover='tooltip', data-placement='top', title='#{subitem.type} Goal')
+                          .goal-avatar-wrapper(data-hover='tooltip', data-placement='top', title='#{subitem.userName}')        
+                            .goal-avatar.tile-avatar.avatar-border
+                              img(src='/img/avatar-f-big.svg')
+                          .goal-info-wrapper    
+                            .goal-title.text-capitalize      
+                              strong #{subitem.goal}
+                            .goal-date
+                              img(src='/img/calendar-icon-s.svg', width='15', height='15', alt='calendar icon')
+                              | #{subitem.expiry_date}
+                          .right-wrapper.text-right.hidden-xs
+                             a.open-feedback-field(role='button')
+                               img(src='/img/feedback-icon.svg', width='20', height='20', alt='send icon', data-hover='tooltip', data-placement='top', title='Type Feedback', data-toggle='collapse', href='#feedback-expand-#{subitem._id}', aria-expanded='false', aria-controls='feedback-expand-#{subitem._id}')
+                             a.delete-b(role='button', data-toggle='tooltip', data-placement='top', title='Delete Goal', data-id='#{subitem._id}')
+                                img(src='/img/delete-icon.svg', width='20', height='20', alt='delete icon')
+                             a.edit-b(role='button', data-toggle='modal', data-target='#tableAction', data-hover='tooltip', data-placement='top', title='Edit Goal', data-id='#{subitem._id}')
+                                img(src='/img/edit-icon-g.svg', width='20', height='20', alt='type') 
+                        .sub-g-action-buttons.text-center.visible-xs
+                          a.open-feedback-field(role='button')
+                               img(src='/img/feedback-icon.svg', width='20', height='20', alt='send icon', data-hover='tooltip', data-placement='top', title='Type Feedback', data-toggle='collapse', href='#feedback-expand-#{subitem._id}', aria-expanded='false', aria-controls='feedback-expand-#{subitem._id}')
+                             a.delete-b(role='button', data-toggle='tooltip', data-placement='top', title='Delete Goal', data-id='#{subitem._id}')
+                                img(src='/img/delete-icon.svg', width='20', height='20', alt='delete icon')
+                             a.edit-b(role='button', data-toggle='modal', data-target='#tableAction', data-hover='tooltip', data-placement='top', title='Edit Goal', data-id='#{subitem._id}')
+                                img(src='/img/edit-icon-g.svg', width='20', height='20', alt='type') 
+                        .goal-timeline
+                          case subitem.status
+                            when 'Accomplished'
+                                - var progressClass = 'progress-green'
+                                - var progressVal = 100
+                            when 'In progress' 
+                                - var progressClass = 'progress-yellow'
+                                - var progressVal = item.progress
+                            when 'Not started' 
+                                - var progressClass = ''
+                                - var progressVal = 0
+                            when 'No longer relevant' 
+                                - var progressClass = 'progress-red'
+                                - var progressVal = 100
+                            default
+                                - var progressClass = ''
+                          if item.overdue && item.status == 'In progress' || item.overdue && item.status == 'Not started'
+                            - var progressClass = 'progress-red'
+                            - var progressVal = 100
+                          else if item.overdue && item.status == 'Accomplished' || item.overdue && item.status == 'No longer relevant'
+                            - var progressClass = 'progress-green'
+                            - var progressVal = 100    
+                          .timeline
+                            .progress
+                              .progress-bar.progress-bar-success(class='#{progressClass}', role='progressbar', aria-valuenow='#{progressVal}', aria-valuemin='0', aria-valuemax='100', style='width:#{progressVal}%', data-toggle='tooltip', data-placement='top', title='#{progressVal}%')
+                                span.sr-only #{subitem.progress}% Complete
+                        .collapse(id='feedback-expand-#{subitem._id}')
+                          .feedback-field
+                            .input-group
+                              input.goal-feedback.form-control.input-field-blank(type='text', placeholder='Provide feedback')
+                              span.input-group-btn
+                                button.btn.btn-blank.send-feedback(type='button', data-toggle='tooltip', data-placement='top', title='Send Feedback')
+                                  img(src='/img/send-icon-b.svg', width='25', height='25', alt='type')         
+                       
+          - var isDisabled = item.isMine == 1 ? '' : 'disabled'
+          .goal-action-buttons
+            .row
+              .col-xs-4.text-center(class="#{isDisabled}")
+                a.open-feedback-field(role='button')
+                  img(src='/img/feedback-icon.svg', width='20', height='20', alt='send icon', data-hover='tooltip', data-placement='top', title='Type Feedback', data-toggle='collapse', href='#feedback-expand-#{item._id}', aria-expanded='false', aria-controls='feedback-expand-#{item._id}')    
+              .col-xs-4.text-center
+                a.delete-b(role='button', data-toggle='tooltip', data-placement='top', title='Delete Goal', data-id='#{item._id}')
+                  img(src='/img/delete-icon.svg', width='20', height='20', alt='delete icon')
+              .col-xs-4.text-center(class="#{isDisabled}")
+                a.edit-b(role='button', data-toggle='modal', data-target='#tableAction', data-hover='tooltip', data-placement='top', title='Edit Goal', data-id='#{item._id}')
+                  img(src='/img/edit-icon-g.svg', width='20', height='20', alt='type')
+          .collapse(id='feedback-expand-#{item._id}')
+            .feedback-field
+              .input-group
+                input.goal-feedback.form-control.input-field-blank(type='text', placeholder='Provide feedback')
+                span.input-group-btn
+                  button.btn.btn-blank.send-feedback(type='button', data-toggle='tooltip', data-placement='top', title='Send Feedback')
+                    img(src='/img/send-icon-b.svg', width='25', height='25', alt='type')          
+           
+                

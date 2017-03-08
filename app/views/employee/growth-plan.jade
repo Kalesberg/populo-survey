@@ -1,0 +1,29 @@
+extends ../application
+
+block variables
+    - var css_files = ['/css/lib/jquery.dataTables.min.css', '/css/lib/responsive.dataTables.min.css', '/css/lib/jquery.mCustomScrollbar.min.css', '/css/layout.css', '/css/growth-plan.css']
+    - var js_files = ['/js/libraries/jquery.dataTables.min.js', '/js/libraries/dataTables.responsive.min.js', '/js/libraries/jquery.mCustomScrollbar.concat.min.js', '/js/growth-plan.js']
+    - var title = 'Growth Plan'
+
+    script.
+        var growthplan_items = jsonParse("#{items}");
+
+block content
+   body
+      #wrapper.container-fluid
+         .row
+            .col-md-12
+               .gp-wrapper
+                  .gp-header.text-center
+                     h1.gp-title.text-center.text-uppercase growth plan
+                  .cards-wrapper
+                      include _help_tabs_growth_plan
+                  .table-wrapper
+                     table#gp-table.display(cellspacing='0', width='100%')
+                        thead
+                          tr
+                            th.text-capitalize.text-center(data-toggle='tooltip', data-placement='top', title='Consider naming a few goals you want to accomplish in the next 3-6 months.') goal
+                            th.text-capitalize.text-center way forward
+                            th.text-capitalize.text-center(data-toggle='tooltip', data-placement='top', title='Where are you in regard to this goal?') status
+                            th.text-capitalize.text-center(data-toggle='tooltip', data-placement='top', title='Add any helpful comments here.') comments
+                        tbody

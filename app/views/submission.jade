@@ -1,0 +1,25 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width')
+    link(href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700', rel='stylesheet' type='text/css')
+
+    title Populo
+    block css
+      link(rel='stylesheet', href='/css/lib/bootstrap.min.css')
+      link(rel='stylesheet', href='/css/lib/bootstrap-theme.min.css')
+      link(rel='stylesheet', href='/css/layout.css')
+      link(rel='stylesheet', href='/css/commons.css')
+      link(rel='stylesheet', href='/css/assessment.css')
+    block js
+      if ENV_DEVELOPMENT
+        script(src='http://localhost:35729/livereload.js')
+  body
+    include header
+    block content
+
+    script(src='/js/libraries/jquery-2.1.4.min.js')
+    script(src='/js/libraries/bootstrap.min.js')
+    script.
+      window.setTimeout(function(){window.location.href = "/dashboard";}, 5000);

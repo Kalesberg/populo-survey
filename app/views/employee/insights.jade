@@ -1,0 +1,19 @@
+extends ../application
+
+block variables
+  - var css_files = ['/css/lib/jquery.mCustomScrollbar.min.css', '/css/layout.css']
+  - var js_files = ['/js/libraries/jquery.mCustomScrollbar.concat.min.js']
+
+block content
+  #wrapper.container-fluid(style='max-width:1200px;')
+    .row
+      .col-md-12(style='padding-top:20px;').text-center
+        img(src='/img/grow-mockup.png')
+        div(style='position: absolute;top: 27px;left: 145px;width: 450px;height: 230px;')
+          a(href='/ppl_competency', style='display: block;width: 100%;height: 100%;')
+        div(style='position: absolute; top: 27px;left: 605px;width: 450px;height: 230px;')
+          a(href='/social_newtork_analysis', style='display: block;width: 100%;height: 100%;')
+        div(style='position: absolute;top: 270px;left: 145px;width: 450px;height: 230px;')
+          a(href='/coaching_opportunities', style='display: block;width: 100%;height: 100%;')
+        div(style='position: absolute; top: 270px;left: 605px;width: 450px;height: 230px;')
+          a(href='/swot', style='display: block;width: 100%;height: 100%;')  

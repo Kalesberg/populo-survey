@@ -1,0 +1,31 @@
+extends home
+
+block content
+  .container
+    .row
+      .col-xs-12
+        .login-wrapper
+          form#login-form(method='post', action='/login')
+            .logo-wrapper.text-center
+              img(src='/img/logo.png', width='125', height='55', alt='logo')
+            .title.text-center Sign in to your Populo account
+            .form-f-wrapper
+              span.abcd.form-control-feedback
+                img(src='/img/avatar-small.png', width='20', height='20', alt='username icon')
+                | Username
+              input#username.form-control(name='username' value="" type='text', aria-label='...')
+            .form-f-wrapper
+              span.form-control-feedback
+                img(src='/img/lock-icon.png', width='20', height='20', alt='password icon')
+                | Password
+              input#password.form-control(name='password' value="" type='password', aria-label='...')
+            .form-f-wrapper
+              button.btn.btn-pr(type='submit')
+                img(src='/img/login-icon.png', width='20', height='20', alt='login icon')
+                | LOGIN
+                //            .form-f-wrapper
+              .row
+                .col-xs-12.col-sm-6
+                  a(href='') Forgot password?
+                .col-xs-12.col-sm-6.text-right
+                  a(href='') Don't have an account?

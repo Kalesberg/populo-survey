@@ -1,0 +1,34 @@
+extends ../application
+
+block variables
+  - var css_files = ['/css/lib/jquery.mCustomScrollbar.min.css', '/css/layout.css', '/css/notifications.css']
+  - var js_files = ['/js/libraries/jquery.mCustomScrollbar.concat.min.js']
+
+block content
+  #wrapper.container-fluid
+    .row
+      .col-xs-12
+        .panel-wrapper
+            .panel.panel-default
+              .panel-heading
+                span.panel-title.text-capitalize
+                  img(src='/img/insights-icon.svg', width='35', height='35', alt='insights icon')
+                  | Notifications
+                span.panel-icon.pull-right(data-toggle='collapse', data-target='#notifications-wrapper')
+                  img(src='/img/collapse-icon.svg', width='20', height='20', alt='collapse icon')
+              #notifications-wrapper.panel-body.collapse.in
+                .panel-content
+                  ul.notifications
+                      each notification in notifications
+                            li
+                              a(href=notification.url)
+                                if notification.type.notificationType == 'SurveySubmission' || notification.type.notificationType == 'Multi-Raters-Take-Survey-Thank-You'
+                                   - var surveyClass1 = 'status-c-f-o'
+                                   - var surveyClass2 = 'status-c-f-i'
+                                else
+                                   - var surveyClass1 = 'status-c-ip-o'
+                                   - var surveyClass2 = 'status-c-ip-i'
+                                .status-wrapper
+                                  div(class='status-c-outer center-block #{surveyClass1}')
+                                    div(class='status-c-inner #{surveyClass2}')
+                                div= notification.text

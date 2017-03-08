@@ -1,0 +1,761 @@
+doctype html
+html
+  head
+    - var css_files = ['reports.css', 'fonts.css', 'lib/bootstrap.min.css', 'lib/bootstrap-theme.min.css', 'charts/graphs.css', 'charts/slider-chart.css']
+    - var js_files = ['libraries/jquery-2.1.4.min.js', 'libraries/bootstrap.min.js', 'libraries/loadash.min.js', 'libraries/d3.min.js', 'charts/custom-chart-lib.js', 'charts/chart-worker.js', 'pdf-report-leader.js']
+
+    each css_file in css_files
+      link(rel='stylesheet', href="#{requestedUrl}/css/#{css_file}", type='text/css', media='all')
+
+    script(src="#{requestedUrl}/js/client_helper.js")
+
+    script.
+      var skillsQA = jsonParse("#{skillsQA}");
+      var culctureQA = jsonParse("#{culctureQA}");
+      var managerEffectivenessQA = jsonParse("#{managerEffectivenessQA}");
+      var teamEffectivenessQA = jsonParse("#{teamEffectivenessQA}");
+      var behaviors = jsonParse("#{behaviorsQA}");
+      var multiRatersSkills = jsonParse("#{multiRatersSkills}");
+      var multiRatersBehaviours = jsonParse("#{multiRatersBehaviours}");
+      var employeeManagerRatingBehaviours = jsonParse("#{employeeManagerRatingBehaviours}") 
+      var employeeManagerRatingSkills = jsonParse("#{employeeManagerRatingSkills}") 
+      var employeeTeamRatingBehaviours = jsonParse("#{employeeTeamRatingBehaviours}") 
+      var employeeTeamRatingSkills = jsonParse("#{employeeTeamRatingSkills}") 
+      var myTeamManagerEffectiveness = jsonParse("#{myTeamManagerEffectiveness}") 
+      var employeeTeamEffectiveness = jsonParse("#{employeeTeamEffectiveness}") 
+      var employeeculcture = jsonParse("#{employeeculcture}") 
+      var employeeManagerEffectiveness = jsonParse("#{employeeManagerEffectiveness}") 
+      var employeeBehaviour = jsonParse("#{employeeBehaviour}") 
+      var employeeSkills = jsonParse("#{employeeSkills}") 
+      var employeeMultiratersBehaviour = jsonParse("#{employeeMultiratersBehaviour}") 
+      var managerTeamEffectiveness = jsonParse("#{managerTeamEffectiveness}") 
+      var managerBehaviour = jsonParse("#{managerBehaviour}") 
+      var managerNameList = jsonParse("#{managerNameList}") 
+      var managerList = jsonParse("#{managerList}") 
+      
+  body
+    #wrapper.container-fluid
+      .row
+        .col-md-12
+          .section-wrapper.cover-p
+            img.background-img(src="#{requestedUrl}/img/imc-html-email-cover.png")
+            .text-right
+              img(src="#{requestedUrl}/img/populo-logo.png", width='85', height='45', alt='')
+            .title-wrapper.pull-right.text-right
+              .text-uppercase.green-color  growth report
+              .text-capitalize.name-wrapper.blue-color #{user.full_legal_name} Leader
+            .imc-logo-wrapper
+              img(src="#{requestedUrl}/img/imc-logo.jpg")
+          
+          .section-wrapper.p-b-none.new.page-break
+            .text-right
+              img(src="#{requestedUrl}/img/populo-logo.png", width='85', height='45', alt='')
+            .section-title
+              span.text-uppercase how to use this report
+            p
+              strong.blue-color For Your Growth:
+            .l-wrapper
+              .row.h-t-u-report
+                .col-md-2
+                .col-md-2
+                .col-md-2
+                  div.whitebold 1
+                  div.white Read your results and use the reflection questions to interpret them.
+                .col-md-2
+                  div.whitebold 2
+                  div.white Develop a draft of your growth plan.
+                .col-md-2
+                  div.whitebold 3
+                  div.white Review your growth plan with your manager and finalize your growth plan.
+            p
+              strong.blue-color For The Growth of Your Function:
+            .l-wrapper
+              .row.h-t-u-report
+                .col-md-2
+                  div.whitebold 1
+                  div.white Read your team’s results and use the reflection questions to interpret them.
+                .col-md-2
+                  div.whitebold 2
+                  div.white Prepare to coach your direct reports as they develop their growth plans.
+                .col-md-2
+                  div.whitebold 3
+                  div.white Review individual growth plans with each of your direct reports, provide them feedback, and work with them to finalize their growth plans. 
+                .col-md-2
+                  div.whitebold 4
+                  div.white Prepare to facilitate a discussion on the results with your direct reports and the organization.
+                .col-md-2
+                  div.whitebold 5
+                  div.white If your direct reports accomplish their goals, encourage them to set new goals and update their growth plans.
+            .text-right
+              .btn-green.pull-right >>
+              
+          .section-wrapper.new.page-break
+            .text-right
+              img(src="#{requestedUrl}/img/populo-logo.png", width='85', height='45', alt='')
+            .section-title
+              span.text-uppercase about populo
+            .section-s-title
+              strong.blue-color populo is how we measure and plan for performance at Engage.
+            .populo-formula-wrapper
+              span.blue-color populo =
+              span  Review +
+              span  Growth
+            p
+              | populo has two parts. The review component measures how you have performed while the growth component identifies opportunities for how you will grow. Involvement in populo will result in an individualized growth plan, which you can use to guide and monitor your personal growth throughout the year.
+            p
+              strong.text-capitalize.blue-color what’s in the report
+              br
+              | This report contains results for the five dimensions of growth at Engage: (1) culcture, (2) team effectiveness, (3) manager effectiveness, (4) behaviors, and (5) skills.
+            .l-wrapper
+              .blue-color There are six sections to the report. 
+              ul
+                li.blue-color Sections 1-5 cover each dimension of growth including why we measure the dimension, your results, and reflection questions intended to help you complete your growth plan.
+                li.blue-color Section 6 provides guidance on how to create your growth plan and next steps.
+                li.blue-color There is also an appendix containing end notes.              
+            br 
+            p
+              strong.text-capitalize.blue-color the disclaimer
+              br
+              | You know yourself better than any survey knows you. This report takes into account how you, your multi-raters and your team responded to the growth survey. We’ve tried to make the reflection questions as poignant as possible, but there is always room for improvement. Feel free to make notes or edit your report for accuracy, but only after checking with your manager and team. 
+          
+          .section-wrapper.new.page-break
+            .text-right
+              img(src="#{requestedUrl}/img/populo-logo.png", width='85', height='45', alt='')
+            .section-title
+              span.s-blue-color SECTION 1:
+              span culcture
+            p
+              strong.blue-color We define culcture as learning and vitality–the energy and motivation that you bring each day to work. We believe that your culcture will lead to better results for you and the organization.
+              sup.blue-color 1            
+            p
+              strong.text-capitalize.blue-color results at a glance
+              br
+              | This image depicts how you rated your own culcture. The size and color of each circle illustrates the degree to which you agreed with the related statement in the survey. The bigger the circles and the more blue you see, the more likely it is that you feel as though you are culcture.
+
+            p
+              strong.text-uppercase.blue-color YOUR culcture
+              
+            .row.text-center.graphs
+              #culcture-legend.text-center.ratings
+                ul.-legend
+                  li
+                    span
+                    span.ratings__label Not at all
+                  li
+                    span
+                    span.ratings__label Not really
+                  li
+                    span
+                    span.ratings__label Neutral  
+                  li
+                    span
+                    span.ratings__label Yes
+                  li
+                    span
+                    span.ratings__label Enthusiastic yes
+              .row.text-center
+                #culcture
+                #culcture-support
+            p
+              strong.text-capitalize.blue-color comments
+              br
+              if _.isUndefined(culcture) || (_.pluck(culcture.comments, 'answerText') == '')
+                | Empty
+              else
+                each comment in culcture.comments
+                  span !{comment.answerText.replace(/\n/g, '<br/>')}
+                
+          .section-wrapper.new.page-break
+            p
+              | These images depict the average culcture rating for each team in your function. The averages include all of the team members on each team but exclude the manager.
+            p
+              strong.text-uppercase.blue-color TEAMS IN FUNCTION culcture
+              
+            .row.text-center.graphs
+              #culcture-legend.text-center.ratings
+                ul.-legend
+                  li
+                    span
+                    span.ratings__label Not at all
+                  li
+                    span
+                    span.ratings__label Not really
+                  li
+                    span
+                    span.ratings__label Neutral  
+                  li
+                    span
+                    span.ratings__label Yes
+                  li
+                    span
+                    span.ratings__label Enthusiastic yes
+              .row.text-center.dynamic-culcture
+          .section-wrapper.new.page-break
+            p
+              strong.text-capitalize.blue-color comments
+              br
+              if _.isUndefined(culcture) || (_.pluck(culcture.comments, 'answerText') == '')
+                | Empty
+              else
+                each comment in culcture.comments
+                  span !{comment.answerText.replace(/\n/g, '<br/>')}
+            .r-questions-wrapper 
+              p
+                strong.blue-color Reflection Questions
+                br
+                span.blue-color
+                  | In planning for your growth, we ask you to consider how you might increase your learning and vitality. Please take a moment to think about and jot down your responses to the following questions.
+              .r-questions
+                img(src="#{requestedUrl}/img/r-questions-icon.png", width='72', height='72', alt='')
+                .r-q-wrapper
+                  div
+                    strong.s-blue-color What new things do you want to learn?
+                  div
+                    strong.s-blue-color How can you get more of the things that energize you?
+            .r-questions-wrapper.blue 
+              p
+                span.blue-color
+                  | In planning for our organizational growth, we ask you to consider how you might increase learning and vitality. Please take a moment to think about and jot down your response to the following question.
+              .r-questions
+                img(src="#{requestedUrl}/img/r-questions-icon.png", width='72', height='72', alt='')
+                .r-q-wrapper
+                  div
+                    strong.dark-blue-color How might we improve Engage’s overall culcture? 
+          
+          .section-wrapper.new.page-break
+            .text-right
+              img(src="#{requestedUrl}/img/populo-logo.png", width='85', height='45', alt='')
+            .section-title
+              span.s-blue-color SECTION 2:
+              span.text-uppercase team effectiveness
+            p
+              strong.blue-color Cohesive and effective teams outperform ineffective teams. Having more effective teams at Engage will help us to achieve our business goals. We define the five functions of team effectiveness as trust, healthy conflict, commitment, accountability, and results.
+              sup.blue-color 2
+            p
+              strong.text-capitalize.blue-color results at a glance
+              br
+              | This images below depict how managers and teams in your function rated team effectiveness. The more color you see, the more likely it is that a manager and his/her team see their team as effective. The more alignment you see, the more likely it is that the manager and the team share a similar opinion of team effectiveness.
+            p
+              strong.text-uppercase.blue-color TEAM EFFECTIVENESS FOR EACH OF THE LEADER’S TEAMS
+            .row.text-center.graphs.graphs-h-w.new-h
+              .row
+                .text-center.ratings.teameffectiveness__legend
+                  ul.teameffectiveness__legend-wrapper
+                    li.skills__label-item.teameffectiveness__label_you
+                      span
+                      span The Manager
+                    li.skills__label-item.teameffectiveness__label_team
+                      span
+                      span The team
+                .dynamic-teameffectiveness
+          .section-wrapper.new.page-break    
+            p
+              strong.text-capitalize.blue-color comments
+              br
+              if _.isUndefined(team_effectiveness) || (_.pluck(team_effectiveness.comments, 'answerText') == '')
+                | Empty
+              else
+                each comment in team_effectiveness.comments
+                  span !{comment.answerText.replace(/\n/g, '<br/>')}
+            .r-questions-wrapper
+              p
+                strong.blue-color Reflection Questions
+                br
+                span.blue-color
+                  | In planning for our growth, we ask you to consider how you might contribute to Engage’s team effectiveness. Please take a moment to think about and jot down your responses to the following questions.
+              .r-questions
+                img(src="#{requestedUrl}/img/r-questions-icon.png", width='72', height='72', alt='')
+                .r-q-wrapper
+                  div
+                    strong.s-blue-color How might you be able to contribute to the effectiveness of the teams you lead?
+                  div
+                    strong.s-blue-color What might we do as an organization to improve team effectiveness?
+          
+          .section-wrapper.new.page-break
+            .text-right
+              img(src="#{requestedUrl}/img/populo-logo.png", width='85', height='45', alt='')
+            .section-title
+              span.s-blue-color SECTION 3:
+              span.text-uppercase manager effectiveness
+            p
+              strong.blue-color Manager effectiveness is directly correlated to employee satisfaction and engagement. The more effective our managers, the better our people and teams will be.
+              sup.blue-color 3
+            p
+              strong.text-capitalize.blue-color results at a glance
+              br
+              | This image depicts how you rated yourself as a manager. The size and color of each circle illustrates the degree to which you agreed with the related statement in the survey. The bigger the circles and the more blue you see, the more likely it is that you feel as though you are an effective manager. 
+            .row.text-center.graphs
+              #manager-effectiveness-legend.text-center.ratings
+                ul.-legend
+                  li
+                    span
+                    span.ratings__label Not at all
+                  li
+                    span
+                    span.ratings__label Not really
+                  li
+                    span
+                    span.ratings__label Neutral  
+                  li
+                    span
+                    span.ratings__label Yes
+                  li
+                    span
+                    span.ratings__label Enthusiastic yes
+              .row.text-center
+                #manager-effectiveness
+                #manager-effectiveness-support
+          .section-wrapper.new.page-break  
+            p
+              | This image depicts how, on average, the people you manage rated you as a manager. The larger the circles, the more likely it is that the people you manage see you as an effective manager. 
+            .row.text-center.graphs
+              #manager-effectiveness-legend.text-center.ratings
+                ul.-legend
+                  li
+                    span
+                    span.ratings__label Not at all
+                  li
+                    span
+                    span.ratings__label Not really
+                  li
+                    span
+                    span.ratings__label Neutral  
+                  li
+                    span
+                    span.ratings__label Yes
+                  li
+                    span
+                    span.ratings__label Enthusiastic yes
+              .row.text-center
+                #manager-effectiveness-avg.manager-effectiveness-myteam
+                #manager-effectiveness-support-avg.manager-effectiveness-support-myteam
+                
+            p
+              | These images depict how the managers you manage were evaluated by their teams. The larger the circles, the more likely it is that teams see their manager as effective.
+            .row.text-center.graphs
+              .row.text-center.dynamic-manager-effectiveness
+          .section-wrapper.new.page-break       
+            .r-questions-wrapper
+              p
+                strong.blue-color Reflection Questions
+                br
+                span.blue-color
+                  | In planning for your growth, we ask you to consider how you might improve your effectiveness as a manager. Please take a moment to think about and jot down your response to the following questions.
+              .r-questions
+                img(src="#{requestedUrl}/img/r-questions-icon.png", width='72', height='72', alt='')
+                .r-q-wrapper
+                  div
+                    strong.s-blue-color How might you be able to contribute to the effectiveness of the managers you manage?
+                  div
+                    strong.s-blue-color What might we do as an organization to improve manager effectiveness?
+          
+          .section-wrapper.new.page-break
+            .text-right
+              img(src="#{requestedUrl}/img/populo-logo.png", width='85', height='45', alt='')
+            .section-title
+              span.s-blue-color SECTION 4:
+              span.text-uppercase behaviors
+            p
+              strong.blue-color These thirteen behaviors outline what we believe are the key behavioral indicators team members need to be successful at Engage. Collectively, they measure that (1) you make things happen, (2) you work smart, and (3) people want you on their team. These behaviors are applicable to and measured for all managers.
+              sup.blue-color 4
+            p
+              strong.text-capitalize.blue-color results at a glance
+              br
+              | This image depicts how you and your multi-raters rated your behaviors. The location and color of the circle on the line illustrates how you were rated on each behavior.
+            .row
+              .text-center.ratings.behaviours__legend
+                ul.behaviours__legend-wrapper
+                  li.behaviours__label-item.behaviours__label_significant_growth_needed
+                    span
+                    span Significant growth needed
+                  li.behaviours__label-item.behaviours__label_some_growth_needed
+                    span
+                    span Some growth needed
+                  li.behaviours__label-item.behaviours__label_adequately_exhibits_this_skill
+                    span
+                    span Adequately demonstrates this behavior
+                  li.behaviours__label-item.behaviours__label_exemplifies
+                    span
+                    span Exemplifies
+                  li.behaviours__label-item.behaviours__label_exemplifies_and_successfully_grows
+                    span
+                    span Exemplifies and successfully grows it in others
+              .col-md-12.g-cleared.chart-wrapper.behaviours__chart-wrapper
+                
+            p
+              br 
+              br 
+              br
+              strong.text-capitalize.blue-color Your Functions Results At-a-Glance
+              br
+              | The images below depict the average behavior ratings for team members and managers in your function. The location and color of the circle on the line illustrates how you were rated on each behavior.
+            p
+              br
+              br
+              br
+              strong.text-uppercase.blue-color AVERAGE BEHAVIOR SCORE FOR TEAM MEMBERS AND MANAGERS IN YOUR FUNCTION
+            .row
+              .text-center.ratings.behaviours__legend
+                ul.behaviours__legend-wrapper
+                  li.behaviours__label-item.behaviours__label_significant_growth_needed
+                    span
+                    span Significant growth needed
+                  li.behaviours__label-item.behaviours__label_some_growth_needed
+                    span
+                    span Some growth needed
+                  li.behaviours__label-item.behaviours__label_adequately_exhibits_this_skill
+                    span
+                    span Adequately demonstrates this behavior
+                  li.behaviours__label-item.behaviours__label_exemplifies
+                    span
+                    span Exemplifies
+                  li.behaviours__label-item.behaviours__label_exemplifies_and_successfully_grows
+                    span
+                    span Exemplifies and successfully grows it in others
+              .col-md-12.g-cleared.chart-wrapper.behaviours__chart-wrapper-avg
+                
+          .section-wrapper.new.page-break         
+            .r-questions-wrapper
+              p
+                strong.blue-color Reflection Questions
+                br
+                span.blue-color
+                  | In planning for your growth, we ask you to consider how you might better exemplify the behaviors. Please take a moment to think about and jot down your responses to the following questions.
+              .r-questions
+                .col-xs-2.text-center
+                  img(src="#{requestedUrl}/img/r-questions-icon.png", width='72', height='72', alt='')
+                .col-xs-10.word-wrap
+                  .r-q-wrapper
+                    div
+                      strong.s-blue-color What contributed to these results? 
+                    div
+                      strong.s-blue-color How might you need to adjust your behaviors as you grow at Engage? 
+            .r-questions-wrapper.blue
+              p
+                span.blue-color
+                  | In planning for our growth, we ask you to consider how you might help the organization better exemplify the behaviors. Please take a moment to think about and jot down your responses to the following question.
+              .r-questions
+                .col-xs-2.text-center
+                  img(src="#{requestedUrl}/img/r-questions-icon.png", width='72', height='72', alt='')
+                .col-xs-10.word-wrap
+                  .r-q-wrapper
+                    div
+                      strong.dark-blue-color How might we continue to grow these behaviors throughout the organization? 
+          
+          .section-wrapper.new.page-break
+            .text-right
+              img(src="#{requestedUrl}/img/populo-logo.png", width='85', height='45', alt='')
+            .section-title
+              span.s-blue-color SECTION 5:
+              span.text-uppercase skills
+            p
+              strong.blue-color The skills measured are required to be successful in your function at Engage. These skills were identified by the manager(s) in your function for this growth cycle.
+              sup.blue-color 5
+            p
+              strong.text-capitalize.blue-color results at a glance
+              br
+              | The image below depicts how, on average, team members in your function, who were rated on a particular skill, scored.
+            .row.text-center.graphs.graphs-h-w.new-h1
+              .row
+                .text-center.ratings.skills__legend
+                  ul.skills__legend-wrapper
+                    li.skills__label-item.skills__label_you
+                      span
+                      span Average Skill Rating for Team Member in Function
+                br
+                br 
+                .col-md-12.g-cleared.chart-wrapper.p-50.skills__chart-wrapper
+                  // new html
+                  .skill__item
+          
+          .section-wrapper.new.page-break
+            .r-questions-wrapper.blue
+              p
+                strong.blue-color Reflection Questions
+                br
+                span.blue-color
+                  | In planning for our growth, we ask you to consider how your function might better exemplify these skills. Please take a moment to think about and jot down your responses to the following questions.
+              .r-questions
+                img(src="#{requestedUrl}/img/r-questions-icon.png", width='72', height='72', alt='')
+                .r-q-wrapper
+                  div
+                    strong.dark-blue-color What contributed to these results?
+                  div
+                    strong.dark-blue-color How might we continue to grow these skills throughout the organization?
+                  div
+                    strong.dark-blue-color Are there new skills that the organization needs that we don’t currently have?
+          
+          .section-wrapper.page-break
+            .text-right
+              img(src="#{requestedUrl}/img/populo-logo.png", width='85', height='45', alt='')
+            .section-title
+              span.text-uppercase.s-blue-color section 6:
+              span.text-uppercase GROWTH PLANNING AT Engage 
+            p
+              strong.blue-color Everyone at Engage will be creating growth plans. Growth plans help identify and clarify development targets and strategies for hitting those targets. Growth plans also provide structure for individual growth and development. As you develop your growth plan, we ask that you adopt a growth mindset.
+              sup.blue-color 6
+            
+            .l-wrapper
+              .row.h-t-u-report
+                .col-md-2.width-40
+                  div.white The following outlines the steps you need to take next.
+                .col-md-2.width-25
+                  div.whitebold 1
+                  div.white Interpret your results and develop your growth plan.
+                .col-md-2.width-25
+                  div.whitebold 2
+                  div.white Initiate the next steps. 
+            .text-right
+              .btn-green.pull-right >>
+          
+          //.section-wrapper.page-break
+            p.p-b-5
+              strong.blue-color 1. Interpret Your populo Results
+              .blue-color Your responses to the questions below will help you identify the goals to include in your growth plan.
+            div.clearfix
+              .col-md-2.growth-arrow
+                .btn-green.pull-left >>
+              .col-md-10.word-wrap
+                p.p-b-5
+                  strong.s-blue-color What skills or behaviors do you need to develop to perform better in your job today?
+                p.p-b-5
+                  strong.s-blue-color What skills or behaviors do you need/want to develop as you grow at Engage?
+                p.p-b-5
+                  strong.s-blue-color What specific responsibilities, projects, or tasks do you need/want to be a part of?
+            br
+            br
+            p.p-b-5
+              strong.blue-color 2. Develop Your Growth Plan
+              .blue-color Growth planning at Engage is based on the 70-20-10 Learning Model.<sup>8</sup>
+            .table-wrapper
+              table.t-w-25.t-s(width='100%', border='0')
+                tbody
+                  tr
+                    td
+                      div
+                        strong.blue-color Goals
+                      div
+                        strong.blue-color should be specific, measurable, actionable, realistic, and time bound
+                    td
+                      div
+                        strong.white-color 70%
+                      .white-color of growth comes from experience-based assignments
+                    td
+                      div
+                        strong.white-color 20%
+                      .white-color of growth comes from coaching and mentoring
+                    td
+                      div
+                        strong.white-color 10%
+                      .white-color of growth comes from formal training and self-study
+                  tr
+                    td
+                      | Consider naming a few goals you want to accomplish in the next 3-6 months. <br> Goals can include the following: <br><strong>1.</strong> A specific responsibility, task, or project <br><strong>2.</strong> A skill you want or need to develop <br><strong>3.</strong> A behavior that you want or need to develop
+                    td
+                      | Consider some experience-based projects or assignments that will help you to accomplish each goal or develop each skill or behavior.
+                    td
+                      | Consider some ways you might leverage team members, mentors, or managers at Engage to help you accomplish this goal or develop this skill or behavior.
+                    td
+                      | Consider some books/articles, conferences or formal trainings that will help you to accomplish this goal or develop this skill  or behavior.
+          
+          .section-wrapper.new.page-break
+            p
+              strong.blue-color 2. Initiate Next Steps
+            
+            p
+              strong.blue-color Your next steps
+              br
+              | At Engage, we believe you will be more likely to accomplish your career goals if you take responsibility for your growth plan with your manager’s support. With that in mind, it is your responsibility to initiate these two steps. 
+            p.p-35
+              strong.c-green 1. Growth plan discussion with your manager in your function &nbsp;
+              | – The managers in your function should be reaching out to you to share their draft growth plans. You should be prepared to ask questions about the plan and offer additional perspective. Together, you will determine if anything should be modified and ultimately finalize their plan. 
+            p.p-35
+              strong.c-green 2. Growth plan check-ins &nbsp;
+              | – Growth planning is a continuous process. Check-in with the managers in your function on a regular basis to discuss how they are progressing.
+            
+          //.section-wrapper.page-break
+            .section-title.appendix
+              span.text-uppercase.blue-color APPENDIX
+            .table-wrapper
+              .table-title 
+                strong.blue-color Results in Detail
+            br 
+            br
+            .table-wrapper
+              .table-title 
+                span.appendix-details.text-uppercase culcture
+            .table-wrapper.clearfix
+              table.t-w-25(width='100%', border='0')
+                tbody
+                  each qA in culcture.optionsSaved
+                    tr
+                      td.blue-color= qA.question 
+                      td.blue-color= qA.answerText
+            br 
+            br
+            .table-wrapper
+              .table-title 
+                span.appendix-details.text-uppercase TEAM EFFECTIVENESS
+            .table-wrapper.clearfix
+              table.t-w-25(width='100%', border='0')
+                thead
+                  tr
+                    th.blue-color(colspan=2) Your responses:
+                    th.blue-color(colspan=2) Your team’s responses:
+                tbody
+                  each qA in team_effectiveness.optionsSaved
+                    tr
+                      td.blue-color= qA.question_small 
+                      td.blue-color= qA.answerText
+                      td.blue-color= qA.question_small 
+                      td.blue-color= qA.answerText
+            br
+            br
+            .table-wrapper
+              .table-title 
+                span.appendix-details.text-uppercase MANAGER EFFECTIVENESS
+            .table-wrapper.clearfix
+              table.t-w-25(width='100%', border='0')
+                tbody
+                  each qA in manager_effectiveness.optionsSaved
+                    tr
+                      td.blue-color.td-w-65= qA.question 
+                      td.blue-color= qA.answerText
+          
+          //.section-wrapper.page-break
+            .table-wrapper
+              .table-title 
+                span.appendix-details.text-uppercase BEHAVIORS
+            .table-wrapper.clearfix
+              .col-md-3
+              .col-md-3.p-l-none
+                .table-title 
+                  strong.font-size.appendix-detail-table-header You Make Things Happen                
+              .col-md-3.p-l-none
+                .table-title 
+                  strong.font-size.appendix-detail-table-header You Work Smart
+              .col-md-3.p-l-none
+                .table-title 
+                  strong.font-size.appendix-detail-table-header People Want You On Their Team
+              - var i = 0
+              while i < 3
+                table.t-w-25(width='100%', border='0')
+                  thead
+                    tr
+                      th Responder
+                      th.blue-color.text-capitalize= behaviors.optionsSaved[i].question_small.split('-')[1].trim()
+                      th.blue-color.text-capitalize= behaviors.optionsSaved[i+(1*3)].question_small.split('-')[1].trim()
+                      th.blue-color.text-capitalize= behaviors.optionsSaved[i+(2*3)].question_small.split('-')[1].trim()
+                  tbody
+                    tr
+                      td.blue-color You 
+                      td.blue-color= behaviors.optionsSaved[i].answerText
+                      td.blue-color= behaviors.optionsSaved[i+(1*3)].answerText 
+                      td.blue-color= behaviors.optionsSaved[i+(2*3)].answerText
+                    tr
+                      td.blue-color Manager 
+                      td.blue-color= behaviors.optionsSaved[i].answerText
+                      td.blue-color= behaviors.optionsSaved[i+(1*3)].answerText 
+                      td.blue-color= behaviors.optionsSaved[i+(2*3)].answerText
+                    tr
+                      td.blue-color Team Member #1 
+                      td.blue-color= behaviors.optionsSaved[i].answerText
+                      td.blue-color= behaviors.optionsSaved[i+(1*3)].answerText 
+                      td.blue-color= behaviors.optionsSaved[i+(2*3)].answerText
+                    tr
+                      td.blue-color Team Member #2 
+                      td.blue-color= behaviors.optionsSaved[i].answerText
+                      td.blue-color= behaviors.optionsSaved[i+(1*3)].answerText 
+                      td.blue-color= behaviors.optionsSaved[i+(2*3)].answerText
+                    tr
+                      td.blue-color Multi-Rater #1
+                      td.blue-color= behaviors.optionsSaved[i].answerText
+                      td.blue-color= behaviors.optionsSaved[i+(1*3)].answerText 
+                      td.blue-color= behaviors.optionsSaved[i+(2*3)].answerText
+                    tr
+                      td.blue-color Multi-Rater #2
+                      td.blue-color= behaviors.optionsSaved[i].answerText
+                      td.blue-color= behaviors.optionsSaved[i+(1*3)].answerText 
+                      td.blue-color= behaviors.optionsSaved[i+(2*3)].answerText
+                - i++
+                br
+          
+          //.section-wrapper.page-break
+            .table-wrapper
+              .table-title 
+                span.appendix-details.text-uppercase SKILLS
+            .table-wrapper.clearfix
+              - var i = 0
+              while i < skills.optionsSaved.length
+                table.t-w-25(width='100%', border='0')
+                  thead
+                    tr
+                      th Responder
+                      th.blue-color.text-capitalize= skills.optionsSaved[i] ? skills.optionsSaved[i].question_small : ''
+                      th.blue-color.text-capitalize= skills.optionsSaved[i+1] ? skills.optionsSaved[i+1].question_small : ''
+                      th.blue-color.text-capitalize= skills.optionsSaved[i+2] ? skills.optionsSaved[i+2].question_small : ''
+                  tbody
+                    tr
+                      td.blue-color You 
+                      td.blue-color= skills.optionsSaved[i] ? skills.optionsSaved[i].answerText : ''
+                      td.blue-color= skills.optionsSaved[i+1] ? skills.optionsSaved[i+1].answerText : ''
+                      td.blue-color= skills.optionsSaved[i+2] ? skills.optionsSaved[i+2].answerText : ''
+                    tr
+                      td.blue-color Manager 
+                      td.blue-color= skills.optionsSaved[i] ? skills.optionsSaved[i].answerText : ''
+                      td.blue-color= skills.optionsSaved[i+1] ? skills.optionsSaved[i+1].answerText : '' 
+                      td.blue-color= skills.optionsSaved[i+2] ? skills.optionsSaved[i+2].answerText : ''
+                    tr
+                      td.blue-color Team Member #1 
+                      td.blue-color= skills.optionsSaved[i] ? skills.optionsSaved[i].answerText : ''
+                      td.blue-color= skills.optionsSaved[i+1] ? skills.optionsSaved[i+1].answerText : '' 
+                      td.blue-color= skills.optionsSaved[i+2] ? skills.optionsSaved[i+2].answerText : ''
+                    tr
+                      td.blue-color Team Member #2 
+                      td.blue-color= skills.optionsSaved[i] ? skills.optionsSaved[i].answerText : ''
+                      td.blue-color= skills.optionsSaved[i+1] ? skills.optionsSaved[i+1].answerText : '' 
+                      td.blue-color= skills.optionsSaved[i+2] ? skills.optionsSaved[i+2].answerText : ''
+                    tr
+                      td.blue-color Multi-Rater #1
+                      td.blue-color= skills.optionsSaved[i] ? skills.optionsSaved[i].answerText : ''
+                      td.blue-color= skills.optionsSaved[i+1] ? skills.optionsSaved[i+1].answerText : '' 
+                      td.blue-color= skills.optionsSaved[i+2] ? skills.optionsSaved[i+2].answerText : ''
+                    tr
+                      td.blue-color Multi-Rater #2
+                      td.blue-color= skills.optionsSaved[i] ? skills.optionsSaved[i].answerText : ''
+                      td.blue-color= skills.optionsSaved[i+1] ? skills.optionsSaved[i+1].answerText : '' 
+                      td.blue-color= skills.optionsSaved[i+2] ? skills.optionsSaved[i+2].answerText : ''
+                - i += 3
+                if i < skills.optionsSaved.length
+                  br
+                  .table-title 
+                    span.appendix-details.text-uppercase
+                  br
+          .section-wrapper.page-break
+            .text-right
+              img(src="#{requestedUrl}/img/populo-logo.png", width='85', height='45', alt='')
+            .section-title
+              span.text-uppercase.blue-color APPENDIX
+            br 
+            br
+            p.blue-color 
+            sup.blue-color 1 
+            span.blue-color Our measurement of culcture is informed by the work of Gretchen Spreitzer, author of A Socially Embedded Model of culcture at Work, and Paul McGinnis, a Neuroscientist at the NeuroLeadership Institute, and measures the degree to which you agreed with the six statements in the culcture portion of the growth survey. 
+            p.blue-color 
+            sup.blue-color 2 
+            span.blue-color Our measurement of team effectiveness is informed by the work of Patrick Lencioni, author of The Advantage and Five Dysfunctions of a Team: A leadership fable and measures the degree to which you and your team agreed with the five statements in the team effectiveness portion of the growth survey.
+            p.blue-color 
+            sup.blue-color 3 
+            span.blue-color Our measurement of manager effectiveness is informed by the work of Laszlo Bock, author of Work Rules: Insights from Inside Google, the Great Place to Work Survey, and Paul McGinniss, a Neuroscientist at the NeuroLeadership Institute and measures the degree to which you agreed with the seven statements in the manager effectiveness portion of the growth survey.
+            p.blue-color 
+            sup.blue-color 4 
+            span.blue-color Our measurement of behaviors is informed by the behaviors demonstrated by people who have historically been successful at Engage. Behaviors measures the degree to which you exemplify the nine key behaviors from your own perspective, and the perspectives of your manager, your team, and your multi-raters. Similar behaviors are also measured in Amsterdam and Sydney.
+            p.blue-color 
+            sup.blue-color 5 
+            span.blue-color Our measurement of skills is informed by the skills demonstrated by people who have historically be successful in your function at Engage. Skills measures the degree to which you exemplify a specific set of skills from your own perspective, and the perspectives of your manager, your team, and your multi-raters. 
+            p.blue-color 
+            sup.blue-color 6 
+            span.blue-color Growth Midset: Stanford psychology professor, Carol Dweck’s research found that people who have a growth mindset believe that their most basic abilities can be developed through dedication and hard work—intelligence and talent are just the starting point. This view creates a desire for learning and a resilience that is essential for great accomplishment. A growth mindset is the opposite of a fixed mindset, where people believe their basic qualities, like their intelligence or talent, are simply fixed traits. They spend their time documenting their intelligence or talent instead of developing them.
+            
+    each js_file in js_files
+      script(src="#{requestedUrl}/js/#{js_file}")

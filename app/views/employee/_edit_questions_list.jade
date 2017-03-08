@@ -1,0 +1,24 @@
+each answer in submission.answers
+  if answer.question.toString() == question._id.toString()
+    .question.col-md-12
+      .row
+        input.selected-answer.hide(name='questions[#{question._id}]', value=answer.selectedOption)
+        label.col-xs-12.col-sm-5.m-b-15(data-toggle='tooltip', data-placement='top', title='#{question.hint}') #{question.title}
+        .col-xs-12.col-sm-7.m-b-15
+          ul.responses
+            each option, o_index in question.options
+              li
+                if o_index == answer.selectedOption
+                  input.radio-edit-select(id='#{q_index}#{o_index}' type='radio', name='#{question._id}', value='o_index', checked='checked')
+                  label.text-capitalize(for='#{q_index}#{o_index}') #{option}
+                else
+                  input(id='#{q_index}#{o_index}' type='radio', name='#{question._id}', value='o_index')
+                  label.text-capitalize(for='#{q_index}#{o_index}') #{option}
+          span
+            input.select-emotion-option.hide(name='question_emotions[#{question._id}]', value='#{answer.selectedEmotion}')
+            if answer.selectedEmotion
+              button.btn.emotion-btn-active.emotion-btn.btn-not-able-tmj(type='button', data-toggle='tooltip', data-placement='top', title='Not able to make a judgment')
+                img(src='/img/not-able-tmj-icon.svg', alt='')
+            else
+              button.btn.emotion-btn.btn-not-able-tmj(type='button', data-toggle='tooltip', data-placement='top', title='Not able to make a judgment')
+                img(src='/img/not-able-tmj-icon.svg', alt='')

@@ -1,0 +1,26 @@
+- var postURL = (raterAssessment ? '/assessments/raters/'+surveyRaterId : '/assessments/'+survey._id)
+
+form(action='#{postURL}', method='post')
+  .col-md-12
+    .survey-wrapper
+      .s-header
+        .s-image-wrapper.text-center
+          img(width='110', height='35', alt='info', src='/img/populo-logo.svg')     
+      h1.s-title.text-uppercase #{assessment.tag}
+      .row
+        .questions
+          input.hide(name='step', value=step+1)
+          input.hide(name='prevStep', value=step-1)
+          input.hide(type='submit')
+          each question, q_index in questions
+            if submission
+              include _edit_questions_list
+            else
+              include _questions_list
+    if submission
+      include _edit_comments_wrapper
+    else
+      include _comments_wrapper
+    .alert.error-msg.
+      Ooops! Please answer all the questions to continue.
+    include _timeline_wrapper

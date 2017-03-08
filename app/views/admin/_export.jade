@@ -1,0 +1,40 @@
+#export.tab-pane.active(role='tabpanel')
+  div
+    .tab-t-wrapper
+      div
+        strong Export
+    .row
+      .col-md-12
+        .form-horizontal
+          .form-group
+            label.text-capitalize.col-sm-2(for='ftp') FTP location
+            .col-sm-10
+              input#ftp.form-control(type='text', name='host', required='required')
+      .col-md-12
+        .form-horizontal
+          .form-group
+            label.text-capitalize.col-sm-2(for='p-nr') port no
+            .col-sm-10
+              input#p-nr.form-control(type='text', name='port', required='required')
+      .col-md-12
+        .form-horizontal
+          .form-group
+            label.text-capitalize.col-sm-2(for='username') username
+            .col-sm-10
+              input#username.form-control(type='text', name='username', required='required')
+      .col-md-12
+        .form-horizontal
+          .form-group
+            label.text-capitalize.col-sm-2(for='password') add file
+            .col-sm-10
+              .add-file-wrapper.text-center
+                 img(src='img/pdf-icon.svg', width='40', height='40')
+                 input#add-pdf.file-input(type='file', multiple="", name="pdfFile")
+              .added-file
+    .row
+      .col-md-2
+      .col.md-10.text-center
+        a.btn.btn-gray.btn-blue-c(href="/reports", data-hover='tooltip', data-placement='top', title='Export')
+          img(src='img/export-data-icon.svg', width='20', height='20')
+        button#export-save.btn.btn-gray.btn-blue-c(type='submit', data-hover='tooltip', data-placement='top', title='Save')
+          img(src='img/save-icon.svg', width='20', height='20')

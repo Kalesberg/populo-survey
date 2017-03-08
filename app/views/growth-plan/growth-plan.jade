@@ -1,0 +1,126 @@
+extends ../application
+
+block variables
+    - var css_files = ['/css/lib/jquery.dataTables.min.css', '/css/lib/responsive.dataTables.min.css', '/css/lib/jquery.mCustomScrollbar.min.css', '/css/lib/bootstrap-datetimepicker.min.css', '/css/layout.css', '/css/common.css', '/css/growth-plan.css']
+    - var js_files = ['/js/libraries/jquery.dataTables.min.js', '/js/libraries/dataTables.responsive.min.js', '/js/libraries/jquery.mCustomScrollbar.concat.min.js', '/js/libraries/bootstrap-datetimepicker.min.js', '/js/growth-plan.js']
+    - var title = 'Growth Plan'
+    script.
+      var user_id = '#{user._id}';
+
+block content
+   body
+      #wrapper.container-fluid
+         .row
+            .col-md-12
+               .gp-wrapper
+                  .gp-header.text-center
+                    div 
+                      img(src='/img/achieve-icon-g.svg', width='45', height='45', alt='Growth plan icon')
+                  .row
+                    .col-xs-12
+                      h1.gp-title.text-uppercase.pull-left goals
+                      .col-md-6(style='width:70%;margin:35px auto;')
+                        .form-group(style='float:left;width:300px;margin-right:30px;')
+                          #date-wrapper-from.input-group.date
+                            input#goal-date-from.form-control(type='text')
+                            span.input-group-addon
+                              span.glyphicon.glyphicon-calendar
+                        .form-group(style='float:left;width:300px;')
+                          #date-wrapper-to.input-group.date
+                            input#goal-date-to.form-control(type='text')
+                            span.input-group-addon
+                              span.glyphicon.glyphicon-calendar                      
+                      button#addB.btn.btn-gray.btn-blue-c.pull-right(type='submit', data-toggle='modal', data-target='#tableAction', data-hover='tooltip', data-placement='top', title='Add')
+                        img(src='/img/add-icon-white.svg', width='20', height='20', alt='add')
+                include growth-plan-ajax
+      // Modal
+      #tableAction.modal.fade(tabindex='-1', role='dialog', aria-labelledby='tableAction')
+         .modal-dialog(role='document')
+            .modal-content
+               .modal-header
+                  button.close(type='button', data-dismiss='modal', aria-label='Close')
+                     span(aria-hidden='true') ×
+                  h4.modal-title.text-capitalize
+                     img(src='/img/edit-icon-b.svg', width='35', height='35', alt='')
+                     | Edit
+               .modal-body
+                  .form-wrapper
+                     form
+                        .row
+                           .col-md-6
+                              strong *
+                              strong Type:
+                           .col-md-6
+                              .dropdown
+                                 button#select-goal-type.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='true', value='select')
+                                    span.pull-left.text-capitalize select goal type
+                                    span.caret.pull-right
+                                 ul.dropdown-menu(aria-labelledby='select-goal-type')
+                                    li.text-capitalize
+                                       a(href='#', data-value='Organizational') organizational
+                                    li.text-capitalize
+                                       a(href='#', data-value='Personal') personal
+                           .col-md-6
+                              strong *
+                              strong Parent Goal:
+                           .col-md-6
+                              .dropdown
+                                 button#select-contribute-goal.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='true', value='select')
+                                    span.pull-left Select Parent Goal
+                                    span.caret.pull-right
+                                 ul.dropdown-menu(aria-labelledby='select-contribute-goal')
+                           .col-md-6
+                              strong *
+                              strong Title:
+                           .col-md-6
+                              input#goal.form-control(type='text')
+                           .col-md-6
+                              strong *
+                              strong Due date:
+                           .col-md-6
+                              .form-group
+                                #date-wrapper.input-group.date
+                                  input#goal-date.form-control(type='text')
+                                  span.input-group-addon
+                                    span.glyphicon.glyphicon-calendar
+                           .col-md-6
+                              strong *
+                              strong Status:
+                           .col-md-6
+                              .dropdown
+                                 button#select-status.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='true', value='status')
+                                    span.pull-left Select Status
+                                    span.caret.pull-right
+                                 ul.dropdown-menu(aria-labelledby='select-status')
+                                    li
+                                       a(href='#', data-value='Accomplished') Accomplished
+                                    li
+                                       a(href='#', data-value='In progress') In progress
+                                    li
+                                       a(href='#', data-value='Not started') Not started   
+                                    li
+                                       a(href='#', data-value='No longer relevant') No longer relevant
+                           .col-md-6
+                              strong.text-capitalize assignee:
+                           .col-md-6
+                             .dropdown
+                               button#select-assignee.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='true', value='no_assignee')
+                                 span.pull-left.text-capitalize select assignee
+                                 span.caret.pull-right
+                               ul.dropdown-menu(aria-labelledby='select-assignee')
+                                 for oUser in arrUser
+                                   li
+                                     a(href='#', data-value='#{oUser._id}') #{oUser.full_legal_name}           
+                           .col-md-6
+                              strong.text-capitalize stretch goal 
+                           .col-md-6
+                             .switch                                     
+                               input.s-toggle.s-toggle-round(id='s-1', name='s-1', type='checkbox')
+                               label(for='s-1')
+                           .col-md-6
+                              strong.text-capitalize comments:
+                           .col-md-6
+                              input#goal-comments.form-control(type='text')
+                           .hide
+                              input#itemId(val='')
+               .modal-footer

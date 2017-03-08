@@ -1,0 +1,26 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    // [if !mso] <!
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    // <![endif]
+    meta(content='width=device-width,initial-scale=1.0', name='viewport')
+    title Email
+    //if (gte mso 9)|(IE)
+      style(type='text/css').
+        table {border-collapse: collapse;}
+  body(style='background-color: #EEF2F4; padding:15px;')
+    div(style='width:100%;')
+      table(align='center', style="width:100%; max-width:600px; margin-right:auto; margin-left:auto; text-align:center;font-family: 'Open Sans', Arial, Helvetica, sans-serif; border-collapse: collapse; border-spacing: 0;background-color: #fff; border-radius:3px;")        
+        tr
+          td(style='padding:15px 15px 0px 15px;font-size:14px; font-weight:bold;color:#444444; text-align:left;color:#51555b;').
+            Hi #{user_name},
+        tr
+          td(style='padding:15px;font-size:14px;color:#444444;text-align:left;color:#8f9092;')
+            | Thankyou for taking the time to finish your populo survey.
+        tr
+          td(style='padding:25px 20px 0px 20px;font-size:14px;color:#51555b;text-align:left;') Best Regards,
+        tr
+          td(style='padding:0px 20px 20px 20px;font-size:14px;color:#51555b;text-align:left;font-weight:bold;') Engage HR Team
+                             

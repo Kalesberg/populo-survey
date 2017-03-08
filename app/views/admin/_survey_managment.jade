@@ -1,0 +1,61 @@
+- activeInStatus = user.role == 'Manager' || user.role == 'Leader' ? 'active in' : '';
+#assessments.tab-pane(role='tabpanel' class='#{activeInStatus}')
+  .assessments-status-wrapper
+    .tab-t-wrapper
+      div.text-capitalize
+        strong survey status
+    .table-wrapper
+      .alert.error-msg Ooops! Please select row which you want to edit.
+    table#assessments-table.display(cellspacing='0', width='100%')
+      thead
+        tr
+          th.text-capitalize.text-center survey name
+          th.text-capitalize.text-center status
+          th.text-capitalize.text-center created by
+          th.text-capitalize.text-center expiry date
+          th.text-capitalize.text-center details
+      tbody
+        each survey in surveys
+          tr(surveyId="#{survey._id}")
+            td
+              = survey.name
+            td.text-center
+              if survey.isExpiry()
+                .status-c-outer.center-block.status-c-f-o(data-toggle='tooltip', data-placement='top', title='Finished')
+                  .status-c-inner.status-c-f-i
+              else if survey.state == 'started'
+                .status-c-outer.center-block.status-c-ip-o(data-toggle='tooltip', data-placement='top', title='In Progress')
+                  .status-c-inner.status-c-ip-i
+              else
+                .status-c-outer.center-block(data-toggle='tooltip', data-placement='top', title='Not Started')
+                  .status-c-inner
+            td.text-center
+              = survey.createdUser.full_legal_name
+              //| HR Manager
+            td.text-center
+              = survey.expiry_date_format()
+            td.text-center
+              button.view-s-p.btn.btn-gray(type='submit', data-hover='tooltip', data-placement='top', title='View Survey Progress', data-toggle='modal', data-target="#view-assessments")
+                img(src='/img/view-icon-white.svg', width='20', height='20', alt='view')
+              button.survey-preview.btn.btn-gray(type='submit', data-hover='tooltip', data-placement='top', title='Survey Preview', data-toggle='modal', data-target="#template-preview")
+                img(src='/img/view-icon-white.svg', width='20', height='20', alt='view')    
+              if user.role == 'HR Manager'
+                a(href="/survey/raw/#{survey._id}" download="survey_raw_#{survey._id}.json")
+                  button.btn.btn-gray(type='submit', data-hover='tooltip', data-placement='top', title='Export survey raw data to JSON')
+                    img(src='img/save-icon.svg', width='20', height='20', alt='Export survey raw data to JSON')
+
+  .buttons-wrapper.text-center
+    if user.role == 'HR Manager'
+      button#addB.btn.btn-gray.btn-blue-c(type='submit', data-toggle='modal', data-target='#tableAction', data-hover='tooltip', data-placement='top', title='Add')
+        img(src='/img/add-icon-white.svg', width='20', height='20', alt='add')
+    button#editB.btn.btn-gray(type='submit', data-toggle='modal', data-target='#tableAction', data-hover='tooltip', data-placement='top', title='Edit')
+      img(src='/img/edit-icon-white.svg', width='20', height='20', alt='edit')
+    if user.role == 'HR Manager'
+      button#deleteB.btn.btn-gray(type='submit', data-hover='tooltip', data-placement='top', title='Delete')
+        img(src='/img/delete-icon-w.svg', width='20', height='20', alt='delete')
+    if user.role == 'HR Manager'
+      button#shareB.btn.btn-gray(type='submit', data-hover='tooltip', data-placement='top', title='Share with Manager')
+        img(src='/img/share-icon-w.svg', width='20', height='20', alt='share')
+    button#deployB.btn.btn-gray(type='submit', data-toggle='modal', data-target='', data-hover='tooltip', data-placement='top', title='Deploy')
+      img(src='/img/deploy-icon-w.svg', width='20', height='20', alt='deploy')
+

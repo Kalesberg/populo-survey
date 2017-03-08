@@ -1,0 +1,50 @@
+#goals.tab-pane(role='tabpanel')
+  div
+    .tab-t-wrapper
+      div
+        strong.text-capitalize goals
+    .row
+      .col-md-12
+        div
+          input.form-control(id='search-goals', type='text', aria-label='...', placeholder='Search Goals')
+        table#goals-list.display(cellspacing='0', width='100%')
+            thead.hide
+              tr
+                th
+                th
+            tbody 
+              tr
+                td
+                  .goal-header
+                    span.goal-type
+                      img(src='/img/organizational-icon.svg', alt='Organizational Goal', data-hover='tooltip', data-placement='top', title='', data-original-title='Organizational Goal', width='20', height='20')
+                    .goal-avatar-wrapper
+                      .goal-avatar.tile-avatar.avatar-border
+                        img(src='/img/avatar-f-big.svg')
+                    .goal-info-wrapper
+                      .goal-title.text-capitalize
+                        strong yyyyyyyyy
+                      .goal-date
+                        img(src='/img/calendar-icon-s.svg', alt='calendar icon', width='15', height='15')
+                        | Feb 07, 2017
+                td.text-right
+                  button.deleteB.btn.btn-gray(type='submit', data-id='', data-hover='tooltip', data-placement='top', title='', data-original-title='Delete Goal')
+                    img(src='/img/delete-icon-w.svg', alt='delete', width='20', height='20')
+              tr
+                td
+                  .goal-header
+                    span.goal-type
+                      img(src='/img/organizational-icon.svg', alt='Organizational Goal', data-hover='tooltip', data-placement='top', title='', data-original-title='Organizational Goal', width='20', height='20')
+                    .goal-avatar-wrapper
+                      .goal-avatar.tile-avatar.avatar-border
+                        img(src='/img/avatar-f-big.svg')
+                    .goal-info-wrapper
+                      .goal-title.text-capitalize
+                        strong dummy title
+                      .goal-date
+                        img(src='/img/calendar-icon-s.svg', alt='calendar icon', width='15', height='15')
+                        | Feb 07, 2017
+                td.text-right
+                  button.deleteB.btn.btn-gray(type='submit', data-id='', data-hover='tooltip', data-placement='top', title='', data-original-title='Delete Goal')
+                    img(src='/img/delete-icon-w.svg', alt='delete', width='20', height='20')        
+                

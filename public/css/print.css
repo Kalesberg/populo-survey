@@ -1,0 +1,29 @@
+.donot-print{
+  display: none;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  #reports-wrapper, #reports-wrapper * {
+    visibility: visible;
+    -webkit-print-color-adjust: exact;
+  }
+  #reports-wrapper .panel-heading{
+    border: none;
+  }
+
+  #reports-wrapper {
+    position: absolute;
+    left: 80px;
+    top: 0;
+  }
+  .culcture-panel-report-print {
+    left: 50px !important;
+  }
+  .manager-report-print {
+    left: 200px !important;
+  }
+}

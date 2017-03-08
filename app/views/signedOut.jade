@@ -1,0 +1,16 @@
+extends home
+
+block content
+  .container
+    .row
+      .col-xs-12
+        .login-wrapper          
+          .logo-wrapper.text-center
+            img(src='/img/logo.png', width='125', height='55', alt='logo')
+          .title.text-center Sign In
+            .btn-group.sign-in
+              a(href='/login' style="background-color: grey; color: white;").btn.btn-sm.btn-social.text-center
+                img(src='/img/avatar-small.png', width='20', height='20', alt='federated login icon')
+                span LAN / Engage
+              
+              

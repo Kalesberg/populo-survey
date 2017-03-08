@@ -1,0 +1,26 @@
+#wrapper.container-fluid { max-width:768px; }
+#wrapper.container-fluid div.row div.col-xs-12 div.panel-wrapper { padding-top: 25px; }
+div.col-xs-12 div.panel-wrapper div.panel.panel-default { border:none; box-shadow:none; border-radius:3px; background-color:#fff; margin-bottom:0px; }
+div.panel-wrapper div.panel.panel-default div.panel-heading { background-image:none; background-color:#fff; border-bottom:1px solid #e5e6e8; padding:12px 20px 12px 20px; }
+div.panel-wrapper div.panel.panel-default div.panel-heading span.panel-title.text-capitalize { font-size:17px; font-weight:bold; color:#51555b;}
+div.panel-wrapper div.panel.panel-default div.panel-heading span.panel-title.text-capitalize img { margin-right:10px; }
+div.panel-wrapper div.panel.panel-default div.panel-heading span.panel-icon.pull-right { padding-top:6px; }
+div.panel-wrapper div.panel.panel-default div.panel-heading span.panel-icon.pull-right:hover { cursor:pointer; }
+div.panel-body { padding:0px; }
+div.panel-body div.panel-content-header.text-center { background-color:#f2f3f5; padding:10px; border-bottom:1px solid #e5e6e8; }
+div.panel-body div.panel-content { padding:0px; }
+div.panel-body div.panel-content ul.list-unstyled { margin-bottom:0px; }
+div.panel-body div.panel-content ul.list-unstyled li { background-color:#fff; padding:7px 10px 7px 10px; border-radius:3px; margin-bottom:5px; }
+div.panel-body div.panel-content ul.list-unstyled li img { margin-left:5px; margin-right:5px; }
+
+div#notifications-wrapper ul.notifications { list-style:none; padding:0px; margin:0px; }
+div#notifications-wrapper ul.notifications li { border-bottom:1px solid #ecedef; color:#8f9092; }
+div#notifications-wrapper ul.notifications li a { display:table; color:#8f9092; padding:10px 25px 10px 25px; text-decoration:none; font-size: 13px; width: 100%; }
+div#notifications-wrapper ul.notifications li a:hover { background-color:#f5f6f8;}
+div#notifications-wrapper ul.notifications li a div.status-wrapper { display: table-cell;vertical-align: middle;padding-right: 10px; width: 26px; }
+div#notifications-wrapper ul.notifications li a div:nth-of-type(2) { display: table-cell;vertical-align: middle; }
+div#notifications-wrapper ul.notifications li ul.list-unstyled { padding-left:55px; }
+div#notifications-wrapper ul.notifications li ul.list-unstyled li { padding: 5px 25px 5px 0px; }
+div#notifications-wrapper ul.notifications li ul.list-unstyled li:last-child { padding-bottom:20px; }
+div#notifications-wrapper ul.notifications li ul.list-unstyled li span { color:#51555b; font-weight:bold; }
+div#notifications-wrapper a.text-uppercase.text-center { width: 100%; display: block; padding: 10px; background-color: #f5f6f8; font-weight: bold; color: #8f9092; }

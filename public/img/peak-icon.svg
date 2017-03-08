@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 113.6 66.4" style="enable-background:new 0 0 113.6 66.4;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#002F87;}
+	.st1{fill:none;}
+	.st2{opacity:0.45;fill:#00AFAA;}
+	.st3{fill:#00AFAA;}
+	.st4{fill:url(#XMLID_15_);}
+</style>
+<g id="XMLID_29_">
+	<path id="XMLID_45_" class="st0" d="M15.3,22.3H0v34.9h2.1V43.6h13.2c3,0,5.8-1.1,7.8-3.1c1.9-2,2.9-4.6,2.9-7.5
+		C26.1,26.9,21.4,22.3,15.3,22.3z M2.1,24.1H15c5.2,0,8.9,3.7,8.9,8.9s-3.7,8.9-8.9,8.9H2.1V24.1z"/>
+	<line id="XMLID_44_" class="st1" x1="101.5" y1="27.5" x2="101.5" y2="29.1"/>
+	<g id="XMLID_39_">
+		<g id="XMLID_42_">
+			<rect id="XMLID_43_" x="69.9" class="st2" width="0.6" height="11.6"/>
+		</g>
+		<g id="XMLID_40_">
+			<polygon id="XMLID_41_" class="st3" points="70.5,6.4 70.5,0.6 85.5,3.5 			"/>
+		</g>
+	</g>
+	<polygon id="XMLID_38_" class="st0" points="32.3,55.4 32.3,41.1 50.7,41.1 50.7,39.3 32.3,39.3 32.3,24.1 53.7,24.1 53.7,22.3 
+		30.2,22.3 30.2,57.2 49,57.2 49.8,55.4 	"/>
+	<polygon id="XMLID_37_" class="st0" points="100,35.4 112.4,22.3 109.8,22.3 89.7,43.4 89.7,22.3 87.6,22.3 87.6,49.2 89.7,54.3 
+		89.7,46.2 98.5,36.9 111.1,57.2 113.6,57.2 	"/>
+	<linearGradient id="XMLID_15_" gradientUnits="userSpaceOnUse" x1="69.8428" y1="66.4171" x2="69.8428" y2="10.7829">
+		<stop  offset="3.876355e-002" style="stop-color:#FFFFFF"/>
+		<stop  offset="5.059922e-002" style="stop-color:#F0FAFA"/>
+		<stop  offset="0.1048" style="stop-color:#B2E7E5"/>
+		<stop  offset="0.1584" style="stop-color:#7BD6D3"/>
+		<stop  offset="0.2101" style="stop-color:#4FC8C4"/>
+		<stop  offset="0.2596" style="stop-color:#2DBDB9"/>
+		<stop  offset="0.3063" style="stop-color:#14B5B1"/>
+		<stop  offset="0.349" style="stop-color:#05B1AC"/>
+		<stop  offset="0.3841" style="stop-color:#00AFAA"/>
+		<stop  offset="0.614" style="stop-color:#0075C9"/>
+	</linearGradient>
+	<polygon id="XMLID_36_" class="st4" points="89.7,54.3 87.6,49.2 71.9,10.8 68.4,10.8 49.8,55.4 49,57.2 45.2,66.4 47.6,66.4 
+		51.4,57.2 52.2,55.4 55.1,48.5 56,46.2 69.5,13.2 70.6,13.2 84,46.2 85,48.5 87.6,54.8 88.5,57.2 92.1,66.4 94.5,66.4 	"/>
+	<g id="XMLID_34_">
+		<polygon id="XMLID_35_" class="st3" points="58.9,39.2 59.7,37.1 67.9,35.2 72.5,37.9 75.8,33.6 80.4,37.3 81.6,40.3 75.9,36.1 
+			72.8,40.2 67.9,37.2 		"/>
+	</g>
+</g>
+</svg>

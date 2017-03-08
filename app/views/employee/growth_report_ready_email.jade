@@ -1,0 +1,34 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    // [if !mso] <!
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    // <![endif]
+    meta(content='width=device-width,initial-scale=1.0', name='viewport')
+    title Email
+    //if (gte mso 9)|(IE)
+      style(type='text/css').
+        table {border-collapse: collapse;}
+  body(style='background-color: #EEF2F4; padding:15px;')
+    div(style='width:100%;')
+      table(align='center', style="width:100%; max-width:600px; margin-right:auto; margin-left:auto; text-align:center;font-family: 'Open Sans', Arial, Helvetica, sans-serif; border-collapse: collapse; border-spacing: 0;background-color: #fff; border-radius:3px;")
+        tr
+          td(style='padding:25px;border-radius: 3px 3px 0px 0px; background-color:#1f99d5;color:#fff;font-size:18px;')
+            img(style='vertical-align:bottom;', src='http://imctest.populo.co/img/quote-icon-white.png', width='35', height='35', alt='')
+            div There is no substitute for hard work when it comes to achieving success.
+        tr
+          td(style='padding:15px 15px 0px 15px;font-size:14px; font-weight:bold;color:#444444; text-align:left;color:#51555b;').
+            Hi #{user_name},
+        tr
+          td(style='padding:15px;font-size:14px;color:#444444;text-align:left;color:#8f9092;')
+            | Your results are ready to be viewed! The results include feedback from your manager, your team and your multi-raters. Take some time, review the report, think about what you want to achieve and have a conversation with your manager about your growth plan.
+
+            br
+            | You can access the report here
+            a(href="#{report_link}" target="_blank") Take me to my report!
+        tr
+          td(style='padding:25px 20px 0px 20px;font-size:14px;color:#51555b;text-align:left;') Best Regards,
+        tr
+          td(style='padding:0px 20px 20px 20px;font-size:14px;color:#51555b;text-align:left;font-weight:bold;') Engage HR Team
+                             

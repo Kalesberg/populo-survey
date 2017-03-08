@@ -1,0 +1,39 @@
+#wrapper.container-fluid { 
+    max-width:1000px; 
+}
+
+div.ei-wrapper {
+    padding: 25px;
+}
+
+div.ei-wrapper ul {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+div.ei-wrapper ul li.col-xs-6.col-md-4 {
+    padding-bottom: 50px;
+}
+
+div.ei-wrapper ul li.col-xs-6.col-md-4 div.card.text-center div.card-t.text-uppercase {
+    color: #8f9092;
+}
+
+div.ei-wrapper ul li.col-xs-6.col-md-4 div.card.text-center div.card-icon {
+    padding: 15px;
+}
+
+div.ei-wrapper ul li.col-xs-6.col-md-4 div.card.text-center div.card-value {
+    padding-bottom: 15px;
+    font-size: 45px;
+    line-height: 1;
+}
+
+div.ei-wrapper ul li.col-xs-6.col-md-4 div.card.text-center div.card-value.v-higher {
+    color: #40aa74; 
+}
+
+div.ei-wrapper ul li.col-xs-6.col-md-4 div.card.text-center div.card-value.v-lower {
+    color: #f26955; 
+}

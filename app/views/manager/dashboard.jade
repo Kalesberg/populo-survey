@@ -1,0 +1,213 @@
+extends ../application
+
+block variables
+  script.
+    var emptySet = {questions: [0,0,0,0,0,0], answers: [0,0,0,0,0,0]}
+    var skillsQA = emptySet;
+    var culctureQA = emptySet;
+    var behaviors = [];
+    var managerEffectivenessQA = emptySet;
+    var teamEffectivenessQA = emptySet;
+
+  - var css_files = ['/css/lib/select2.min.css', '/css/lib/select2.min.css', '/css/lib/jquery.mCustomScrollbar.min.css', '/css/charts/graphs.css', '/css/layout.css', '/css/insights.css', '/css/charts/slider-chart.css']
+  - var js_files = ['/js/libraries/select2.min.js', '/js/libraries/jquery.dataTables.min.js', '/js/libraries/dataTables.responsive.min.js', '/js/libraries/d3.min.js','/js/libraries/jquery.mCustomScrollbar.concat.min.js', '/js/hr-manager-dash.js', '/js/insights.js', '/js/charts/custom-chart-lib.js', '/js/charts/chart-worker.js', '/js/commons.js']
+
+block content
+  #wrapper.container-fluid
+    .row
+      .col-sm-12
+        if(user.insights_on)
+          .panel-wrapper
+            .panel.panel-default
+              .panel-heading
+                span.panel-title.text-capitalize
+                  img(src='/img/insights-icon.svg', width='35', height='35', alt='insights icon')
+                  | Insights
+                span.panel-icon.pull-right(data-toggle='collapse', data-target='#insights-wrapper')
+                  img(src='/img/collapse-icon.svg', width='20', height='20', alt='collapse icon')
+              #insights-wrapper.panel-body.collapse.in
+                .panel-content
+                  ul.list-unstyled
+                    li
+                      .notification-wrapper
+                        .notification-icons
+                          img(src='/img/avatar-m-small.svg', width='40', height='40', alt='avatar')
+                        .notification-text-wrapper
+                          .notification-title 
+                            strong Matt Daniels 
+                            | received negative feedback on his testing skill for second consecutive. His learning preferences might be towards in person training sessions.
+                          //.notification-description Dave is struggling with keeping up with his team on Python development
+                        .notification-icons
+                          button.btn.btn-gray(type='submit', data-toggle='tooltip', data-placement='top', title='', data-original-title='Some title')
+                            img(src='/img/add-icon-white.svg', alt='export to pdf', width='20', height='20')
+                          button.btn.btn-gray(type='submit', data-toggle='tooltip', data-placement='top', title='', data-original-title='Some title')
+                            img(src='/img/tick-icon-w.svg', alt='export to pdf', width='20', height='20')
+                    li
+                      .notification-wrapper
+                        .notification-icons
+                          img(src='/img/avatar-m-small.svg', width='40', height='40', alt='avatar')
+                        .notification-text-wrapper
+                          .notification-title 
+                            strong Dave Martins 
+                            | is struggling with keeping up with his team on Python development
+                        .notification-icons
+                          button.btn.btn-gray(type='submit', data-toggle='tooltip', data-placement='top', title='', data-original-title='Some title')
+                            img(src='/img/add-icon-white.svg', alt='export to pdf', width='20', height='20')
+                          button.btn.btn-gray(type='submit', data-toggle='tooltip', data-placement='top', title='', data-original-title='Some title')
+                            img(src='/img/tick-icon-w.svg', alt='export to pdf', width='20', height='20') 
+        .grow-mockup.text-center
+          .col-md-12(style='padding-top:20px;').text-center
+            img(src='/img/grow-mockup.png')
+            div(style='position: absolute;top: 27px;left: 30px;width: 450px;height: 230px;')
+              a(href='/ppl_competency', style='display: block;width: 100%;height: 100%;')
+            div(style='position: absolute; top: 27px;left: 490px;width: 450px;height: 230px;')
+              a(href='/social_newtork_analysis', style='display: block;width: 100%;height: 100%;')
+            div(style='position: absolute;top: 270px;left: 30px;width: 450px;height: 230px;')
+              a(href='/coaching_opportunities', style='display: block;width: 100%;height: 100%;')
+            div(style='position: absolute; top: 270px;left: 490px;width: 450px;height: 230px;')
+              a(href='/swot', style='display: block;width: 100%;height: 100%;')                    
+        .panel-wrapper.hide
+          .panel.panel-default
+            .panel-heading
+              span.panel-title.text-capitalize
+                img(src='/img/analytics-icon.svg', width='35', height='35', alt='insights icon')
+                | analytics
+              span.panel-icon.pull-right(data-toggle='collapse', data-target='#analytics-wrapper')
+                img(src='/img/collapse-icon.svg', width='20', height='20', alt='collapse icon')
+            #analytics-wrapper.panel-body.collapse.in
+              .panel-content-header.text-center
+                a(onclick="dashboardPrintView()")
+                  button.btn.btn-gray(type='submit', data-toggle='tooltip', data-placement='top', title='Print')
+                    img(src='/img/print-icon-white.svg', width='20', height='20', alt='print')
+                a#pdf-export-button(download)
+                  button.btn.btn-gray(type='submit', data-toggle='tooltip', data-placement='top', title='Export to PDF')
+                    img(src='/img/pdf-icon-white.svg', width='20', height='20', alt='export to pdf')
+              .panel-content
+                .row
+                  .col-md-12.manager-select-b
+                    .row
+                      .col-md-4
+                        select#select-individual.c-select
+                          each employee in employees
+                            option(value='')
+                            option(value=employee.full_legal_name)= employee.full_legal_name
+                      .col-md-4
+                        select#select-topic.c-select
+                          each assessmentTag in ManagerAssessmentTags
+                            option(value='')
+                            option(value=assessmentTag)= assessmentTag.toLowerCase()
+                      .col-md-4
+                        button.btn.btn-gray-fw(type='button', id="get-insights")
+                          img(src='/img/tick-icon-white.svg', width='20', height='20', alt='login icon')
+                  .manager-report-print#reports-wrapper
+                    .col-md-12#empty-message-graphs.hide.text-center
+                      b No Data Found
+                    .col-md-12.hide.culcture-panel-report-print#culcture-panel
+                      .graph-title.text-capitalize.text-center culcture
+                      #culcture-wrapper.panel-body.collapse.in
+                        .panel-content.text-center
+                          .row.text-center
+                            #culcture
+                            #culcture-support
+                          #culcture-legend.text-center.ratings
+                            ul.-legend
+                              li
+                                span
+                                span.ratings__label Not at all
+                              li
+                                span
+                                span.ratings__label Not really
+                              li
+                                span
+                                span.ratings__label Neutral
+                              li
+                                span
+                                span.ratings__label Yes
+                              li
+                                span
+                                span.ratings__label Enthusiastic yes
+                    .col-md-12.hide#team-effectiveness-panel
+                      .graph-title.text-capitalize.text-center Team Effectiveness
+                      #team-effectiveness-wrapper.panel-body.collapse.in
+                        .panel-content.text-center
+                        #wrapper.container-fluid.skills
+                          .row
+                            .col-md-12.g-cleared.chart-wrapper.team-effectiveness__chart-wrapper
+                              // new html
+                              .skill__item
+                              .skill__item
+                            .text-center.ratings.teameffectiveness__legend
+                              ul.teameffectiveness__legend-wrapper
+                                li.skills__label-item.teameffectiveness__label_you
+                                  span
+                                  span You
+                                li.skills__label-item.teameffectiveness__label_team
+                                  span
+                                  span Your team
+
+                    .col-md-12.hide#manager-effectiveness-panel
+                      .graph-title.text-capitalize.text-center Manager Effectiveness
+                      #manager-effectiveness-wrapper.panel-body.collapse.in
+                        .panel-content.text-center
+                        #wrapper.container-fluid.skills
+                          .row
+                            .col-md-12.g-cleared.chart-wrapper.manager-effectiveness__chart-wrapper
+                              // new html
+                              .skill__item
+                              .skill__item
+                            .text-center.ratings.teameffectiveness__legend
+                              ul.teameffectiveness__legend-wrapper
+                                li.skills__label-item.teameffectiveness__label_you
+                                  span
+                                  span You
+                                li.skills__label-item.teameffectiveness__label_team
+                                  span
+                                  span Your team
+                    .col-md-12.hide#behaviors-panel
+                      .graph-title.text-capitalize.text-center Behaviors
+                      #behaviors-wrapper.panel-body.collapse.in
+                        #wrapper.container-fluid.behaviours
+                          .row
+                            .col-md-12.g-cleared.behaviours__chart-wrapper
+                              
+                            .text-center.ratings.behaviours__legend
+                              ul.behaviours__legend-wrapper
+                                li.behaviours__label-item.behaviours__label_significant_growth_needed
+                                  span
+                                  span Significant growth needed
+                                li.behaviours__label-item.behaviours__label_some_growth_needed
+                                  span
+                                  span Some growth needed
+                                li.behaviours__label-item.behaviours__label_adequately_exhibits_this_skill
+                                  span
+                                  span Adequately demonstrates this behavior
+                                li.behaviours__label-item.behaviours__label_exemplifies
+                                  span
+                                  span Exemplifies
+                                li.behaviours__label-item.behaviours__label_exemplifies_and_successfully_grows
+                                  span
+                                  span Exemplifies and successfully grows it in others
+
+                    .col-md-12.hide#skills-panel
+                      .graph-title.text-capitalize.text-center Skills
+                      #skills-wrapper.panel-body.collapse.in
+                        .panel-content.text-center
+                        #wrapper.container-fluid.skills
+                          .row
+                            .col-md-12.g-cleared.chart-wrapper.skills__chart-wrapper
+                              // new html
+                              .skill__item
+                              .skill__item
+                            .text-center.ratings.skills__legend
+                              ul.skills__legend-wrapper
+                                li.skills__label-item.skills__label_you
+                                  span
+                                  span You
+                                li.skills__label-item.skills__label_manager
+                                  span
+                                  span Your manager
+                                li.skills__label-item.skills__label_team
+                                  span
+                                  span Your team
+
+                  .row.col-md-12.text-center#no-data-graph

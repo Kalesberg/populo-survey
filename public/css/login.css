@@ -1,0 +1,106 @@
+body {
+  background-color: #ecedef;
+}
+
+.p-b { padding-bottom: 15px; }
+
+.login-wrapper {
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #FFF;
+  margin-top: 150px;
+  border-radius: 3px;
+  color: #51555b;
+  font-size: 20px;
+  padding-bottom: 40px;
+}
+
+.logo-wrapper {
+  background-color: #f5f6f8;
+  padding: 20px 0px 20px 0px;
+  border-radius: 3px 3px 0px 0px;
+}
+
+div.title {
+  padding: 30px 40px 30px 40px;
+}
+
+.form-f-wrapper {
+  padding: 0px 40px 0px 40px;
+  position: relative;
+}
+
+input#username.form-control, input#password.form-control {
+  height: 50px;
+  border: none;
+  background-color: #f5f6f8;
+  box-shadow: none;
+  margin-bottom: 10px;
+}
+
+span.form-control-feedback {
+  position: absolute;
+  z-index: 3;
+  left: 40px;
+  width: 150px;
+  height: 50px;
+  line-height: 50px;
+  text-align: left;
+  padding-left: 15px;
+  color: #babcbe;
+  font-size: 14px;
+}
+
+.btn-pr {
+  border: none;
+  background-image: none;
+  border-radius: 2px;
+  text-shadow: none;
+  font-weight: bold;
+  color: #FFF;
+  width: 100%;
+  background-color: #1c99d6;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
+button.btn.btn-pr:hover {
+  opacity: 0.8;
+  transition: all 300ms ease-in-out 0s;
+  color: #fff;
+}
+
+button.btn.btn-pr img {
+  margin-right: 5px;
+}
+
+div.form-f-wrapper div.col-xs-12.col-sm-6 a, div.form-f-wrapper div.col-xs-12.col-sm-6.text-right a {
+  color: #babcbe;
+  font-size: 14px;
+  padding: 0px;
+}
+
+@media ( max-width: 768px ) {
+  div.form-f-wrapper div.col-xs-12.col-sm-6, div.form-f-wrapper div.col-xs-12.col-sm-6.text-right {
+    text-align: center;
+  }
+
+  .login-wrapper {
+    font-size: 17px;
+    margin-top: 15px;
+  }
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #f5f6f8 inset !important;
+}
+
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+  background-color: #f5f6f8 !important;
+}
+
+input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:active, input:-webkit-autofill:hover {
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-box-shadow: 0 0 0px 1000px #f5f6f8 inset !important;
+}

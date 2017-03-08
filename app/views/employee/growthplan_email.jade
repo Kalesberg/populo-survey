@@ -1,0 +1,55 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    // [if !mso] <!
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    // <![endif]
+    meta(content='width=device-width,initial-scale=1.0', name='viewport')
+    title Email
+    //if (gte mso 9)|(IE)
+      style(type='text/css').
+        table {border-collapse: collapse;}
+  body(style='background-color: #EEF2F4; padding:15px;')
+    div(style='width:100%;')
+      table(align='center', style="width:100%; max-width:600px; margin-right:auto; margin-left:auto; text-align:center;font-family: 'Open Sans', Arial, Helvetica, sans-serif; border-collapse: collapse; border-spacing: 0;background-color: #fff; border-radius:3px;")
+        tr
+          td(style='padding:25px;border-radius: 3px 3px 0px 0px; background-color:#1f99d5;color:#fff;font-size:18px;')
+            img(style='vertical-align:bottom;', src='http://imctest.populo.co/img/quote-icon-white.png', width='35', height='35', alt='')
+            div There is no substitute for hard work when it comes to achieving success.
+        tr
+          td(style='padding:15px 15px 0px 15px;font-size:14px; font-weight:bold;color:#444444; text-align:left;color:#51555b;').
+            Hi #{manager && manager.full_legal_name},
+        //tr
+          td(style='padding:15px;font-size:14px;color:#444444;text-align:left;color:#8f9092;')
+            | We know that there are 101 reason why you haven't completed your talent profile. Perhaps you don't have 10 minutes to spare. Or perhaps you don't think you have anything to learn. Or maybe you have our two previous notes flagged in your Inbox with every good intention of getting to it soon.
+            br
+            br
+            | Whatever your reason, we wouldn't be bugging you about it if we weren't convinced that you'll benefit from the results. Will you give it a chance?
+        tr
+          td(style='padding:15px;font-size:14px;color:#444444;text-align:left;color:#8f9092;')
+            br
+            | Growth Plan report for
+            | #{user.full_legal_name}
+            //tr
+          //td(style='padding:10px 15px 25px 15px;font-size:17px;')
+            a(style='padding:10px 35px; color:#fff; background-color:#1f99d5; font-size:14px; font-weight:bold; text-decoration:none; border-radius:2px; display:block; max-width:200px; margin-left:auto; margin-right:auto; ', href='#') Okay, you convinced me
+        tr
+          td(style='padding:15px 15px;')
+            table(style='border: 1px solid black; height:auto; width:100%;border-collapse: collapse;')
+              tr
+                th(style='font-size:14px; font-weight:bold;color:#8f9092;border: 1px solid #e5e6e8;border-collapse: collapse;') Goal
+                th(style='font-size:14px; font-weight:bold;color:#8f9092;border: 1px solid #e5e6e8;border-collapse: collapse;') Way Forward
+                th(style='font-size:14px; font-weight:bold;color:#8f9092;border: 1px solid #e5e6e8;border-collapse: collapse;') Status
+                th(style='font-size:14px; font-weight:bold;color:#8f9092;border: 1px solid #e5e6e8;border-collapse: collapse;') Comments
+              each  item in items
+                tr
+                  td(style='border: 1px solid #e5e6e8;')= item.goal
+                  td(style='border: 1px solid #e5e6e8;')= item.way_forward
+                  td(style='border: 1px solid #e5e6e8;')= item.status
+                  td(style='border: 1px solid #e5e6e8;')= item.comments
+        tr
+          td(style='padding:25px 20px 0px 20px;font-size:14px;color:#51555b;text-align:left;') Best Regards,
+        tr
+          td(style='padding:0px 20px 20px 20px;font-size:14px;color:#51555b;text-align:left;font-weight:bold;') Engage HR Team
+                             

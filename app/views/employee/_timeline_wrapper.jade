@@ -1,0 +1,22 @@
+.timeline-wrapper
+  .timeline-header
+    .text-center
+      span.pull-left
+         | Section #{step+1}/#{sectionsCount}
+      if step != 0
+        button.btn.btn-gray.submit-assessment-back-type
+          img(src='/img/arrow-l.png', width='20', height='20', alt='')
+      if completedQuestions !=  questionsCount
+        #nextQ.button.btn.btn-gray
+          img(src='/img/arrow-r.png', width='20', height='20', alt='')
+      if completedQuestions ==  questionsCount
+        button.btn.btn-gray.submit-assessment-btn(type='submit', data-toggle='tooltip', data-placement='top', title='Submit')
+          img(src='/img/submit-icon-white.svg', width='20', height='20', alt='submit')
+      button.btn.btn-gray.pull-right.save-assessment-btn(type='submit', data-toggle='tooltip', data-placement='top', title='Save')
+        img(src='/img/save-icon.svg', width='20', height='20', alt='save')
+  .timeline
+    .progress
+      .progress-bar.progress-bar-success(role='progressbar', aria-valuenow='#{statusPercentage}', aria-valuemin='0', aria-valuemax='100', style='width: #{statusPercentage}%;')
+        span.sr-only #{statusPercentage}% Complete
+        .timeline-circle(data-toggle='tooltip', data-placement='top', title='#{Math.round(statusPercentage)}%')
+          .timeline-circle-inner

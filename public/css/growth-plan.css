@@ -1,0 +1,280 @@
+#wrapper.container-fluid { 
+    max-width:1000px; 
+}
+
+.gp-wrapper { 
+    background-color:#fff; 
+    border-radius:3px; 
+    margin-top:25px; 
+}
+
+div.gp-header.text-center { 
+    padding:15px; 
+    padding-bottom:0px; 
+    width:100%; 
+    border-radius: 3px;
+    background-color: #f5f6f8;
+}
+
+div.gp-header.text-center div { 
+    padding-bottom: 15px; 
+}
+
+h1.gp-title.text-uppercase { 
+    padding:10px; 
+    font-size:36px; 
+    color:#1f99d5; 
+    border-left: 3px solid #1f99d5; 
+    vertical-align:bottom; 
+    line-height:100%; 
+    font-weight:300; 
+    margin: 20px 0px 20px 0px;
+}
+
+#addB {
+    margin-top: 28px;
+    margin-right: 15px;
+}
+
+div.goals-list-wrapper {
+    padding-top: 25px;
+}
+
+div.goals-list-wrapper ul {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+div.goals-list-wrapper ul li {
+    padding-bottom: 25px;
+}
+
+div.goals-list-wrapper ul li:last-of-type {
+    padding-bottom: 0px;
+}
+
+div.goals-list-wrapper ul li div.goal {
+    background-color: #fff;
+    border-radius: 3px;
+}
+
+div.goals-list-wrapper ul li div.goal div.goal-header {
+    display: table;
+    width: 100%;
+    padding: 10px 20px;
+}
+
+div.goals-list-wrapper ul li div.goal div.goal-header span.goal-type {
+    padding-right: 15px;
+    width: 35px;
+}
+
+div.goal-header span.goal-type, div.goal-header div.goal-avatar-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+div.goal-header div.goal-avatar-wrapper { 
+    width: 46px; 
+}
+
+div.goal-header div.goal-info-wrapper {
+    vertical-align: middle;
+    display: table-cell;
+    padding-left: 10px;
+}
+
+div.goal-header div.goal-info-wrapper div.goal-title {
+    font-size: 17px;
+}
+
+div.goal-header div.goal-info-wrapper div.goal-date {
+    font-size: 13px;
+    color: #8f9092;
+}
+
+div.goal-header div.goal-info-wrapper div.goal-date img {
+    margin-right: 5px;
+}
+
+div.goal-header div.right-wrapper  {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+div.goal-header div.right-wrapper img:hover {
+    cursor: pointer;
+}
+
+/*timeline we have it on other pages*/
+.timeline {
+  background-color: #fff;
+  border-radius: 0px 0px 3px 3px;
+  display: table;
+  width: 100%;
+}
+
+div.timeline div.progress {
+  margin-bottom: 0px;
+  height: 3px;
+  background-color: #d4d5d7;
+  background-image: none;
+  overflow: visible;
+  box-shadow: none;
+  position: relative;
+}
+
+div.progress-bar.progress-bar-success.progress-red:before {
+  background: #f26955; 
+}
+
+div.progress-bar.progress-bar-success.progress-yellow:before {
+  background: #f4bb3e;  
+}
+
+div.progress-bar.progress-bar-success.progress-green:before {
+  background: #40aa74;  
+}
+
+div.progress-bar.progress-bar-success {
+  background-color: #1f99d5;
+  background-image: none;
+  box-shadow: none;
+  position: relative;
+  z-index: 2;
+}
+
+div.progress-bar.progress-bar-success.progress-red, div.progress-bar.progress-bar-success.progress-red div.timeline-circle {
+  background-color: #f26955;  
+}
+
+div.progress-bar.progress-bar-success.progress-yellow, div.progress-bar.progress-bar-success.progress-yellow div.timeline-circle {
+  background-color: #f4bb3e;  
+}
+
+div.progress-bar.progress-bar-success.progress-green, div.progress-bar.progress-bar-success.progress-green div.timeline-circle {
+  background-color: #40aa74;  
+}
+
+div.goals-list-wrapper ul li div.goal div.goal-action-buttons {
+    background-color: #e4e5e7;
+    border-radius: 0px 0px 3px 3px;
+    padding: 15px
+}
+
+div.goals-list-wrapper ul li div.feedback-field {
+    padding: 0px 15px 15px 15px;
+    background-color: #e4e5e7;
+}
+
+div.goals-list-wrapper ul li div.feedback-field div.input-group span {
+    background-color: #fff;
+    border-radius: 0px 3px 3px 0px;
+}
+
+div.child-goals-list-wrapper {
+    background-color: #e4e5e7;
+    padding: 15px 15px 0px 15px;
+}
+
+div.child-goals-list-wrapper ul li {
+    padding-bottom: 5px;
+}
+
+div.child-goals-list-wrapper ul li div.goal div.goal-header {
+    padding: 7px 15px
+}
+
+div.child-goals-list-wrapper div.goal-avatar-wrapper div.goal-avatar.tile-avatar img {
+    width: 30px;
+    height: 30px;
+}
+
+div.child-goals-list-wrapper div.goal-info-wrapper div.goal-title {
+    font-size: 15px;
+}
+
+div.child-goals-list-wrapper div.goal-avatar-wrapper {
+    width: 36px;
+}
+
+div.child-goals-list-wrapper div.right-wrapper {
+    width: 120px;
+}
+
+div.child-goals-list-wrapper div.right-wrapper a:nth-of-type(1), 
+div.child-goals-list-wrapper div.right-wrapper a:nth-of-type(2), 
+div.child-goals-list-wrapper div.sub-g-action-buttons a:nth-of-type(1),
+div.child-goals-list-wrapper div.sub-g-action-buttons a:nth-of-type(2){
+    margin-right: 15px;
+}
+
+div.child-goals-list-wrapper ul li div.feedback-field {
+    padding: 0px;
+}
+
+div.child-goals-list-wrapper div.alert.error-msg, div.child-goals-list-wrapper div.alert.success-msg {
+    margin-bottom: 15px;
+}
+
+div.child-goals-list-wrapper div.sub-g-action-buttons {
+    padding: 8px 15px 15px 15px;
+}
+
+/*switch*/
+.switch {
+    display: inline-block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+div.alert.error-msg, div.alert.success-msg {
+    margin-top: 0px;
+}
+
+/*FORM*/
+input#goal.form-control,input#way-forward.form-control, input#goal-comments.form-control, input#key-results.form-control, #tableAction input.goal-feedback.form-control, input#goal-date.form-control { height:50px; border:none; background-color:#f5f6f8; box-shadow:none; margin-bottom:10px; color: #8f9092; }
+div.dropdown button.btn.btn-default { width: 100%; text-align: left; margin-bottom: 10px; height: 50px; background-color: #fff; border-color: #ecedef; background-image: none; box-shadow: none; color: #8f9092;  border-radius: 3px; }
+div.dropdown button.btn.btn-default span.caret.pull-right { margin-top: 10px; }
+.btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default.focus:active, .btn-default:active:focus, .btn-default:active:hover, .open > .dropdown-toggle.btn-default.focus, .open > .dropdown-toggle.btn-default:focus, .open > .dropdown-toggle.btn-default:hover, div.dropdown button.btn.btn-default:hover { color: #8f9092; border-color: #ecedef; background-color:#f5f6f8; }
+div.col-md-6 div.dropdown.open ul.dropdown-menu { min-width: 100%; box-shadow: none; border-color: #ecedef; margin-top: 0px; } 
+input#goal-date.form-control {margin-bottom: 0px;}
+div#date-wrapper span.input-group-addon { background-color: #f5f6f8; border:none;  }
+div#date-wrapper span.input-group-addon span.glyphicon.glyphicon-calendar { color: #cfcfd1; }
+
+/*datetimepicker*/
+.bootstrap-datetimepicker-widget.dropdown-menu li a:hover { border-left: none; }
+
+/*MODAL*/
+div.modal-dialog div.modal-content div.modal-body { padding: 15px 50px 15px 50px; } 
+div.modal-dialog div.modal-content div.modal-footer { text-align: center; } 
+div.modal-dialog div.modal-content div.modal-body div.info-wrapper.text-center { padding-bottom: 15px; }
+div.modal-dialog div.modal-content div.modal-body div.info-wrapper.text-center img { margin-bottom: 15px; }
+div.modal-dialog div.modal-content div.modal-body div.info-wrapper.text-center div:nth-of-type(2) {color: #8f9092;}
+div.modal-dialog div.modal-content div.modal-body div.info-wrapper.text-center ul { padding-left: 0px; padding-top: 15px; color: #8f9092; list-style: none; }
+div.modal-dialog div.modal-content div.modal-body div.form-wrapper form div.row div.col-md-6:nth-child(1), div.modal-dialog div.modal-content div.modal-body div.form-wrapper form div.row div.col-md-6:nth-child(3), div.modal-dialog div.modal-content div.modal-body div.form-wrapper form div.row div.col-md-6:nth-child(5), div.modal-dialog div.modal-content div.modal-body div.form-wrapper form div.row div.col-md-6:nth-child(7), div.modal-dialog div.modal-content div.modal-body div.form-wrapper form div.row div.col-md-6:nth-child(9), div.modal-dialog div.modal-content div.modal-body div.form-wrapper form div.row div.col-md-6:nth-child(11), div.modal-dialog div.modal-content div.modal-body div.form-wrapper form div.row div.col-md-6:nth-child(13), div.modal-dialog div.modal-content div.modal-body div.form-wrapper form div.row div.col-md-6:nth-child(15) {padding-top: 15px;}
+div.modal-dialog div.modal-content div.modal-body div.form-wrapper form div.row div.col-md-6:nth-child(1) strong:first-of-type,
+div.modal-dialog div.modal-content div.modal-body div.form-wrapper form div.row div.col-md-6:nth-child(3) strong:first-of-type,
+div.modal-dialog div.modal-content div.modal-body div.form-wrapper form div.row div.col-md-6:nth-child(5) strong:first-of-type,
+div.modal-dialog div.modal-content div.modal-body div.form-wrapper form div.row div.col-md-6:nth-child(7) strong:first-of-type,
+div.modal-dialog div.modal-content div.modal-body div.form-wrapper form div.row div.col-md-6:nth-child(9) strong:first-of-type {
+    color: #f26955; 
+    padding-right: 5px;
+}
+
+div#tableAction form div.row div.col-md-6:nth-of-type(8) div.form-group {
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    
+    div.gp-wrapper div.cards-wrapper div.row ul li { 
+        padding-bottom: 15px; 
+    }
+    
+    div.modal-dialog div.modal-content div.modal-body { 
+        padding: 15px; 
+    } 
+ 
+}

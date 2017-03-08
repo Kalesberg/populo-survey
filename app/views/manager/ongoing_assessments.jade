@@ -1,0 +1,38 @@
+.panel.panel-default
+  .panel-heading
+    span.panel-title.text-capitalize
+      img(src='/img/on-going-assessments-icon.svg', width='35', height='35', alt='insights icon')
+      | ongoing survey
+    span.panel-icon.pull-right(data-toggle='collapse', data-target='#on-going-assessments-wrapper')
+      img(src='/img/collapse-icon.svg', width='20', height='20', alt='collapse icon')
+  #on-going-assessments-wrapper.panel-body.collapse.in
+    //.panel-content-header.text-center
+      button.btn.btn-gray(type='submit', data-toggle='tooltip', data-placement='top', title='Add')
+        img(src='/img/add-icon-white.svg', width='20', height='20', alt='add')
+      button.btn.btn-gray(type='submit', data-toggle='tooltip', data-placement='top', title='Edit')
+        img(src='/img/edit-icon-white.svg', width='20', height='20', alt='edit')
+    .panel-content
+      ul.list-unstyled
+        if user.survey_progress.length == 0 
+          .text-center
+            strong
+              | There are no ongoing surveys
+        each survey_progress in user.survey_progress
+          .row.message-box
+            .col-md-12
+              .message-text.text-center
+          li.assessment-wrapper
+            .assessment
+              .assesment-title.text-uppercase= survey_progress.name
+              .timeline
+                .progress
+                  .progress-bar.progress-bar-success(role='progressbar', aria-valuenow='#{survey_progress.progress}', aria-valuemin='0', aria-valuemax='100', style='width: #{survey_progress.progress}%;')
+                    span.sr-only #{survey_progress.progress}% Complete
+                    .timeline-circle
+                      .timeline-circle-inner
+            .assessment-action-buttons-wrapper
+              .assessment-action-buttons
+                button.btn.btn-gray(type='submit', data-hover='tooltip', data-placement='top', title='View', data-toggle='modal', data-target="#view-assessments#{survey_progress._id}")
+                  img(src='/img/view-icon-white.svg', width='20', height='20', alt='view')
+                button.btn.btn-gray.survey-reminder-email(link='/send/reminders/#{survey_progress._id}' data-toggle='tooltip', data-placement='top', title='Send Reminder')
+                  img(src='/img/s-reminder-icon-white.svg', width='20', height='20', alt='send reminder')

@@ -1,0 +1,64 @@
+footer.global.navbar.navbar-default {
+  margin-top: 25px;
+}
+
+.m-b-15{
+  margin-bottom: 15px;
+}
+
+.emotion-btn-active {
+  background-color: #1f96d3 !important;
+}
+
+.p-a{
+  padding: 10px;
+}
+
+.p-t-none{
+  padding-top: 0px !important;
+}
+
+.p-50{
+  padding: 50px;
+}
+
+.m-t-10{
+  margin-top: 10px;
+}
+
+.m-t-20{
+  margin-top: 20px;
+}
+
+.fixed{
+  position: fixed !important;
+}
+
+form ul.responses li label.text-capitalize{
+  text-transform: none !important;
+}
+
+.m-l-5{
+    margin-left: 5px !important;
+}
+
+#manager-effectiveness > svg{
+    height: 400px;
+    width: 400px;
+}
+.section-no{
+  float: left;
+  margin-top: 12px;
+}
+.tl-msg{
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.btn-social >img {
+    margin-right: 5px;
+}
+
+.btn-group.sign-in {
+    margin-left: 25px;
+}

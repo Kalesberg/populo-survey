@@ -1,0 +1,52 @@
+extends ../application
+
+block variables
+  - var css_files = ['/css/lib/jquery.mCustomScrollbar.min.css', '/css/layout.css', '/css/assessment.css']
+  - var js_files = ['/js/libraries/jquery.mCustomScrollbar.concat.min.js', '/js/assessment.js']
+
+block content
+  #wrapper.container-fluid
+    .row
+      - var postURL = (raterAssessment ? '/assessments/raters/'+surveyRaterId : '/assessments/'+survey._id)
+      form(action='#{postURL}', method='post')
+        .col-md-12
+          .alert.error-msg.
+            Ooops! Please answer all the questions to continue.
+          .survey-wrapper
+            .s-header
+              .s-image-wrapper.text-center
+                img(width='110', height='35', alt='info', src='/img/populo-logo.svg')     
+            h1.s-title.text-uppercase #{assessment.tag}
+            .row.p-50.p-t-none
+              .questions
+                input.hide(name='step', value=step+1)
+                input.hide(name='prevStep', value=step-1)
+                input.hide(type='submit')
+                each question, q_index in questions
+                  each answer in submission.answers
+                    if answer.question.toString() == question._id.toString()
+                      - var is_last_question = ((questions.length == q_index+1) ? 'last-question' : '')
+                      .question.col-md-12(class=is_last_question)
+                       .row
+                        input.selected-answer.hide(name='questions[#{question._id}]', value=answer.selectedOption)
+                        label.col-xs-12.col-sm-5.m-t-20 #{question.title}
+                        .col-xs-12.col-sm-10.col-sm-offset-1.m-t-10.text-center
+                          ul.responses
+                            each option, o_index in question.options
+                              li
+                                if o_index == answer.selectedOption
+                                  input.radio-edit-select.selectedquestion(id='#{q_index}#{o_index}' type='radio', name='#{question._id}', value='o_index', checked='checked')
+                                  label.text-capitalize(for='#{q_index}#{o_index}') #{option}
+                                else
+                                  input(id='#{q_index}#{o_index}' type='radio', name='#{question._id}', value='o_index')
+                                  label.text-capitalize(for='#{q_index}#{o_index}') #{option}
+                          span
+                            input.select-emotion-option.hide(name='question_emotions[#{question._id}]', value='#{answer.selectedEmotion}')
+                            if answer.selectedEmotion
+                              button.btn.emotion-btn-active.selectedquestion.emotion-btn.btn-not-able-tmj(type='button', data-toggle='tooltip', data-placement='top', title='Not able to make a judgment')
+                                img(src='/img/not-able-tmj-icon.svg', alt='')
+                            else
+                              button.btn.emotion-btn.btn-not-able-tmj(type='button', data-toggle='tooltip', data-placement='top', title='Not able to make a judgment')
+                                img(src='/img/not-able-tmj-icon.svg', alt='')
+          include _edit_comments_wrapper
+          include _timeline_wrapper

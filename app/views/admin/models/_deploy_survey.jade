@@ -1,0 +1,45 @@
+.modal.fade.deploy-survey(tabindex='-1', role='dialog', id='deploySurvey', name='deploySurvey')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        button.close(type='button', data-dismiss='modal', aria-label='Close')
+          span(aria-hidden='true') ×
+        h4.modal-title.text-capitalize
+          img(src='img/deploy-icon-b.svg', width='35', height='35', alt='insights icon')
+          | deploy survey
+      .modal-body
+        .form-f-wrapper
+          .row
+            .col-md-12.text-center
+              div You selected the below survey to deploy:
+              .survey-t
+              input.hide(id='surveyId_deploy_modal', value='')
+          input.form-control(id='search-employees', type='text', aria-label='...', placeholder='Search Employees')
+          .select-all-wrapper(data-hover='tooltip', data-placement='top', title='Select All')
+            .avatars-wrapper
+              .avatar-wrapper-m.avatar-border
+                img(src='/img/avatar-m-small.svg', alt='avatar')
+              .avatar-wrapper-m.avatar-border
+                img(src='/img/avatar-f-small.svg', alt='avatar')
+              .avatar-wrapper-m.avatar-border
+                img(src='/img/avatar-m-small.svg', alt='avatar')
+              .avatar-wrapper-m.avatar-border
+                img(src='/img/avatar-f-small.svg', alt='avatar')
+              .avatar-wrapper-m.avatar-border
+                img(src='/img/avatar-m-small.svg', alt='avatar') 
+            .switch
+              input#s-toggle-all.s-toggle.s-toggle-round(name='s-all', type='checkbox')
+              label.center-block(for='s-toggle-all')    
+          .initiate-scroll.mCustomScrollbar(data-mcs-theme='gray-theme')
+            table.display.multiple-s-list(id='select-employees', cellspacing='0', width='100%')
+              thead
+                tr
+                  th
+                  th
+              tbody
+                tr
+                  td test
+                  td test
+      .modal-footer
+        button.deploySurvey.btn.btn-gray.btn-blue-c(type='submit', data-hover='tooltip', data-placement='top', title='Deploy Survey')
+          img(src='/img/deploy-icon-w.svg', width='20', height='20', alt='deploy')

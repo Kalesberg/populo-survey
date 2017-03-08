@@ -1,0 +1,21 @@
+.space{
+    margin-bottom: 40px;
+    vertical-align: middle;
+}
+.d-dwn{
+    height: 30px;
+    width: 250px;
+    background-color: white;
+    outline: none;
+}
+.b-s{
+    background-color: white;
+    -webkit-appearance: none;
+    border: 1px solid gray;
+    outline: none !important;
+    margin-bottom: 20px;
+    /*background-color: #1c99d6;*/
+    /*border: none;*/
+    /*color: white;*/
+    /*font-weight: 800;*/
+}

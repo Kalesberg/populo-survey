@@ -1,0 +1,18 @@
+#wrapper.container-fluid {
+    max-width: 600px;
+    padding-top: 25px;
+}
+div#wrapper.container-fluid div.row div.col-sm-12 div.s-wrapper { background-color: #fff; border-radius: 3px; padding-bottom: 25px; }
+div#wrapper.container-fluid div.row div.col-sm-12 div.s-wrapper div.s-header.text-center {background-color: #f5f6f8;padding: 20px 0px 20px 0px;border-radius: 3px 3px 0px 0px;}
+div#wrapper.container-fluid div.row div.col-sm-12 div.s-wrapper h1.s-title.text-center { margin-bottom: 0px; margin-top: 25px; font-size: 27px; }
+div#wrapper.container-fluid div.row div.col-sm-12 div.s-wrapper div.s-description { color: #8f9092; font-size: 15px; padding-bottom: 25px; }
+div#wrapper.container-fluid div.row div.col-sm-12 div.s-wrapper div.row div.col-sm-6:first-child { padding-left: 40px;}
+div#wrapper.container-fluid div.row div.col-sm-12 div.s-wrapper div.row div.col-sm-6:last-child { padding-right: 40px;}
+div#wrapper.container-fluid div.row div.col-sm-12 div.s-wrapper div.row div.col-sm-6 a.btn { width: 100%; border: 2px solid #e5e6e8; border-radius: 3px; color: #cfcfd1; padding:25px 15px 25px 15px }
+div#wrapper.container-fluid div.row div.col-sm-12 div.s-wrapper div.row div.col-sm-6 a.btn:hover { color: #1c99d6; border-color: #1c99d6; }
+
+@media screen and (max-width: 768px) {
+div#wrapper.container-fluid div.row div.col-sm-12 div.s-wrapper { padding-bottom: 15px; }    
+div#wrapper.container-fluid div.row div.col-sm-12 div.s-wrapper div.row div.col-sm-6:first-child,div#wrapper.container-fluid div.row div.col-sm-12 div.s-wrapper div.row div.col-sm-6:last-child  { padding-left: 30px;padding-right: 30px;}
+    div#wrapper.container-fluid div.row div.col-sm-12 div.s-wrapper div.row div.col-sm-6:last-child {padding-top: 15px}    
+}

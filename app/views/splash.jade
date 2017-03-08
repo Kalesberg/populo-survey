@@ -1,0 +1,53 @@
+extends application
+
+block variables
+  - var css_files = ['/css/lib/jquery.mCustomScrollbar.min.css','/css/layout.css', '/css/splash.css']
+  - var js_files = ['/js/libraries/jquery.mCustomScrollbar.concat.min.js']
+  
+block content
+  #wrapper.container-fluid
+    .row
+      .col-sm-12
+        .s-wrapper
+          .s-header.text-center
+            img(src='img/populo-logo.svg', alt='populo logo')
+          h1.s-title.text-center Welcome to Populo
+          .s-description.text-center.p-25
+            | Please select one of the below paths to access.
+          .row
+            .col-sm-6
+              a.btn(href='#{lms_link}', target='_blank')
+                svg#splash-l-icon(version='1.1', x='0px', y='0px', height="55" width="55" viewbox='0 0 60.7 60.7', style='enable-background:new 0 0 60.7 60.7;', xml:space='preserve')
+                  g(style='fill: currentColor')
+                    path.st0(d='M30.4,0C13.6,0,0,13.6,0,30.4c0,16.8,13.6,30.4,30.4,30.4c16.8,0,30.4-13.6,30.4-30.4C60.7,13.6,47.1,0,30.4,0z\
+                    M30.4,58.7C14.7,58.7,2,46,2,30.4C2,14.7,14.7,2,30.4,2C46,2,58.7,14.7,58.7,30.4C58.7,46,46,58.7,30.4,58.7z')
+                    path.st0(d='M15,29.3v-2.7l15.1,7.5l16.2-8.3l-16.2-6.9l-16.6,6.9l1.2,0.6v2.9c-0.3,0.1-0.6,0.3-0.6,0.7\
+                    c0,0.2,0.1,0.3,0.2,0.5c0,0,0,0,0,0v1.4c0,0.3,0.2,0.6,0.6,0.6c0.3,0,0.6-0.2,0.6-0.6v-1.4c0,0,0,0,0,0c0.1-0.1,0.2-0.3,0.2-0.5\
+                    C15.6,29.6,15.4,29.3,15,29.3z')
+                    path.st0(d='M41.4,35.8l-0.8-4.4l-10.3,5.6l-10.1-5.6l-0.8,4.7c0,0,0,0,0,0c-0.1,0.2-0.2,0.4-0.2,0.6\
+                    c0,1.7,8.7,6.8,11.3,6.8c2.6,0,11.3-5.2,11.3-6.8C41.6,36.5,41.5,36.3,41.4,35.8L41.4,35.8z')
+                div.text-capitalize your learning path
+            .col-sm-6
+              a.btn(href='#{assessment_link}')
+                svg#splash-a-icon(version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', x='0px', y='0px', width='55', height='55',viewbox='0 0 60.7 60.7', style='enable-background:new 0 0 60.7 60.7;', xml:space='preserve')
+                  g(style='fill: currentColor')
+                    path.st0(d='M21.5,41.4V21h17v7.9c0.3,0,0.6-0.1,0.9-0.1c0.3,0,0.5,0,0.8,0v-4.5h0v-1.7h0V21c0-0.9-0.8-1.7-1.7-1.7h-17\
+                    c-0.9,0-1.7,0.8-1.7,1.7v20.4c0,0.9,0.8,1.7,1.7,1.7h1.7h1.7h10.8c-0.8-0.4-1.5-1-2.1-1.7H21.5z')
+                    path.st0(d='M39.5,29.8c-3.7,0-6.7,3-6.7,6.7c0,3.7,3,6.7,6.7,6.7c3.7,0,6.7-3,6.7-6.7C46.1,32.8,43.1,29.8,39.5,29.8z\
+                    M42.4,35.1l-3.5,3.5c0,0-0.1,0.1-0.2,0.1c-0.1,0-0.2,0-0.2-0.1l-1.9-1.9c-0.1-0.1-0.1-0.1-0.1-0.2s0-0.1,0.1-0.2l0.5-0.5\
+                    c0.1-0.1,0.1-0.1,0.2-0.1c0.1,0,0.1,0,0.2,0.1l1.2,1.2l2.9-2.9c0.1-0.1,0.1-0.1,0.2-0.1c0.1,0,0.1,0,0.2,0.1l0.5,0.5\
+                    c0.1,0.1,0.1,0.1,0.1,0.2C42.5,35,42.4,35.1,42.4,35.1z')
+                    rect.st0(x='25.7', y='23.1', width='11.1', height='1.6')
+                    circle.st0(cx='24.1', cy='23.9', r='0.8')
+                    circle.st0(cx='24.1', cy='28.7', r='0.8')
+                    circle.st0(cx='24.1', cy='33.6', r='0.8')
+                    circle.st0(cx='24.1', cy='38.5', r='0.8')
+                    path.st0(d='M35.8,29.5c0.1-0.1,0.3-0.1,0.4-0.2c0,0,0.1,0,0.1,0c0.1-0.1,0.3-0.1,0.4-0.2c0,0,0,0,0,0v-1.2H25.7v1.6H35.8\
+                    L35.8,29.5z')
+                    path.st0(d='M25.7,32.8v1.6h6.4c0.1-0.6,0.4-1.1,0.6-1.6H25.7z')
+                    path.st0(d='M25.7,37.7v1.6h6.7c-0.2-0.5-0.3-1-0.4-1.6H25.7z')
+                    path.st0(d='M30.4,0C13.6,0,0,13.6,0,30.4c0,16.8,13.6,30.4,30.4,30.4c16.8,0,30.4-13.6,30.4-30.4C60.7,13.6,47.1,0,30.4,0\
+                    z M30.4,58.7C14.7,58.7,2,46,2,30.4C2,14.7,14.7,2,30.4,2C46,2,58.7,14.7,58.7,30.4C58.7,46,46,58.7,30.4,58.7z') 
+                div.text-capitalize your assessment path    
+            
+          

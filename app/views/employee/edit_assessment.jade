@@ -1,0 +1,10 @@
+extends ../application
+
+block variables
+  - var css_files = ['/css/lib/jquery.mCustomScrollbar.min.css', '/css/layout.css', '/css/assessment.css']
+  - var js_files = ['/js/libraries/jquery.mCustomScrollbar.concat.min.js', '/js/assessment.js']
+
+block content
+  #wrapper.container-fluid
+    .row
+      include _questions_form

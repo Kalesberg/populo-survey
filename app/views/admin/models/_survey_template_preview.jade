@@ -1,0 +1,13 @@
+#template-preview.modal.fade(tabindex='-1', role='dialog', aria-labelledby='template-preview')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header.s-header
+        button.close.close-template-preview(type='button', aria-label='Close', data-dismiss="modal")
+          span(aria-hidden='true') ×
+        .s-image-wrapper.text-center
+          img(width='110', height='35', alt='info', src='/img/populo-logo.svg')
+      .modal-body
+        | ...
+      .modal-footer
+        button#editSurveyTemplate.btn.btn-gray(type='submit', data-hover='tooltip', data-placement='top', title='Edit Template', data-toggle="modal", data-target="#tableAction")
+          img(src='/img/edit-icon-white.svg', width='20', height='20', alt='edit')

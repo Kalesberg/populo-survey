@@ -1,0 +1,36 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width')
+    link(href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700', rel='stylesheet' type='text/css')
+    //if IE
+      link(rel='shortcut icon', href='/img/favicon/favicon.ico')
+    link(rel='icon', href='/img/favicon/favicon.png')
+    script(src='/js/client_helper.js')
+    title Populo
+    block variables
+    block css
+      link(rel='stylesheet', href='/css/lib/bootstrap.min.css')
+      link(rel='stylesheet', href='/css/lib/bootstrap-theme.min.css')
+      link(rel='stylesheet', href='/css/commons.css')
+      link(rel='stylesheet', href='/css/print.css', type='text/css', media='print')
+      each css_file in css_files
+        link(rel='stylesheet', href=css_file)
+    block js
+      if ENV_DEVELOPMENT
+        script(src='http://localhost:35729/livereload.js')
+  body
+    include header
+    block content
+    include footer
+
+    script(src='/js/libraries/jquery-2.1.4.min.js')
+    script(src='/js/libraries/bootstrap.min.js')
+    script(src='/js/libraries/loadash.min.js')
+    script(src='/js/libraries/moment.js')
+    script(src='/socket.io/socket.io.js')
+    script(src='/js/notification.js')
+    script(src='/js/app.js')
+    each js_file in js_files
+      script(src=js_file)

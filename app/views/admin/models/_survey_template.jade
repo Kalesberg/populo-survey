@@ -1,0 +1,35 @@
+#tableAction.modal.fade(tabindex='-1', role='dialog', aria-labelledby='view-assessments')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        button.close(type='button', data-dismiss='modal', aria-label='Close')
+          span(aria-hidden='true') ×
+        h4.modal-title.text-capitalize
+          img(src='img/view-icon-b.svg', width='35', height='35', alt='insights icon')
+          | view assessments by user
+      .modal-body
+        .form
+          .row
+            .col-md-12
+              label Select a template to create a new survey:
+              select#template-dropdown.form-control
+                  option(value='')
+                  each template in templates
+                    option(value=template._id)= template.title
+              label.text-capitalize edit survey name
+              input#survey-name.form-control(type='text')
+              label Select survey expiry date
+              .form-group
+                #date-wrapper.input-group.date
+                  input#survey-date.form-control(type='text')
+                  span.input-group-addon
+                    span.glyphicon.glyphicon-calendar
+              label Assign manager to the survey
+              select#assignManager
+                option(value='')
+              label Select dimensions to include in the survey
+              select#selectDimensions(multiple='multiple')
+              label.text-capitalize select skills
+              select#tagQuestions(multiple='multiple')
+      .modal-footer.text-center
+        

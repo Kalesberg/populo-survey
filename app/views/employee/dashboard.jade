@@ -1,0 +1,120 @@
+extends ../application
+
+block variables
+  - var css_files = [ '/css/lib/jquery.mCustomScrollbar.min.css', '/css/layout.css', '/css/user-dash.css']
+  - var js_files = ['/js/libraries/jquery.mCustomScrollbar.concat.min.js', '/js/views/dash/dash.js']
+
+block content
+  #wrapper.container-fluid
+    .row
+      .col-sm-12.profile-wrapper.text-center.hidden-xs
+        .avatar.center-block.avatar-border
+          img(src='#{user.avatar}' alt='avatar')
+        .profile-name.text-capitalize.text-center
+          span= userName
+        .profile-role
+          | #{user.role}
+      .col-sm-12
+        .cards-wrapper
+          .row
+            ul
+              li.col-xs-6.col-md-3
+                a.card-l(href='/insights')
+                  .card-wrapper
+                    .card-header
+                      .card-title-h.text-capitalize
+                        strong.visible-xs grow
+                      .card-s-title-h
+                      .icon-w.avatar-border.text-center
+                        img(src='/img/grow-dash-icon.svg' alt='grow')
+                    .card-title.text-capitalize.text-center.hidden-xs
+                      strong grow
+                    .card-s-title.text-center
+                      | Card subtitle goes here
+                    .text-center.more.hidden-xs
+                      img(src='/img/card-dots.svg' width='25' height='7' alt'more')
+               li.col-xs-6.col-md-3
+                a.card-l(href='/goals')
+                  .card-wrapper
+                    .card-header
+                      .card-title-h.text-capitalize
+                        strong.visible-xs achieve
+                      .card-s-title-h
+                      .icon-w.avatar-border.text-center
+                        img(src='/img/achieve-dash-icon.svg' alt='achieve')
+                    .card-title.text-capitalize.text-center.hidden-xs
+                      strong achieve
+                    .card-s-title.text-center
+                      | Card subtitle goes here
+                    .text-center.more.hidden-xs
+                      img(src='/img/card-dots.svg' width='25' height='7' alt'more') 
+               li.col-xs-6.col-md-3
+                a.card-l(href='/social')
+                  .card-wrapper
+                    .card-header
+                      .card-title-h.text-capitalize
+                        strong.visible-xs social
+                      .card-s-title-h
+                      .icon-w.avatar-border.text-center
+                        img(src='/img/social-dash-icon.svg' alt='insights')
+                    .card-title.text-capitalize.text-center.hidden-xs
+                      strong social
+                    .card-s-title.text-center
+                      | Card subtitle goes here
+                    .text-center.more.hidden-xs
+                      img(src='/img/card-dots.svg' width='25' height='7' alt'more') 
+               li.col-xs-6.col-md-3
+                a.card-l(href='/learning')
+                  .card-wrapper
+                    .card-header
+                      .card-title-h.text-capitalize
+                        strong.visible-xs learn
+                      .card-s-title-h
+                      .icon-w.avatar-border.text-center
+                        img(src='/img/learning-dash-icon.svg' alt='insights')
+                    .card-title.text-capitalize.text-center.hidden-xs
+                      strong learn
+                    .card-s-title.text-center
+                      | Card subtitle goes here
+                    .text-center.more.hidden-xs
+                      img(src='/img/card-dots.svg' width='25' height='7' alt'more')
+
+        .info-wrapper
+          .row
+            ul
+              li.col-sm-6
+                .info
+                  div 
+                    img(src='/img/employee-h-icon.svg' width='40' height='40' alt'')
+                  div
+                    strong.insights-color 
+                      | 8
+                    span
+                      | employees passed you since you last login
+              li.col-sm-6
+                .info
+                  div 
+                    img(src='/img/learning-board-icon.svg' width='40' height='40' alt'')
+                  div
+                    strong.default-color 
+                      | 2
+                    span
+                      | new interesting courses for your career goal
+              li.col-sm-6
+                .info
+                  div 
+                    img(src='/img/msg-icon.svg' width='40' height='40' alt'')
+                  div
+                    strong.social-color 
+                      | 23
+                    span
+                      | messages since your last login
+              li.col-sm-6
+                .info
+                  div 
+                    img(src='/img/calendar-icon.svg' width='40' height='40' alt'')
+                  div
+                    strong.default-color 
+                      | 12
+                    span
+                      | days left until your next deadline       

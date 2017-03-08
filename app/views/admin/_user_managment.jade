@@ -1,0 +1,45 @@
+form#user-management.tab-pane(role='tabpanel')
+  .row
+    .col-sm-12
+      .tab-t-wrapper
+        div
+          strong Import &nbsp;
+          span (.csv, .xlsx, .xls file types only)
+      .row
+        .col-md-12
+          .alert.error-msg Ooops! Please select the correct file type.
+          .file-input-wrapper.text-center
+            img(src='img/upload-icon.svg', width='40', height='40')
+            span select file
+            input#import-file.file-input(type='file', multiple="true", name="userExcel")
+          .added-file
+        .col-md-12.text-center
+          button#import-added.btn.btn-gray(type='submit', disabled='', data-hover='tooltip', data-placement='top', title='Import')
+            img(src='img/import-icon-w-1.svg', width='20', height='20')
+      .tab-t-wrapper
+        div
+          strong User List
+      div
+        input.form-control(id='search-user-list', type='text', aria-label='...', placeholder='Search Users')
+      .table-wrapper.initiate-scroll-user-list.mCustomScrollbar(data-mcs-theme='gray-theme')
+          table#user-list-table.display(cellspacing='0', width='100%')
+            thead
+              tr
+                th.text-capitalize.text-center employee id
+                th.text-capitalize.text-center manager id
+                th.text-capitalize.text-center job profile
+                th.text-capitalize.text-center user name
+                th.text-capitalize.text-center full legal name
+                th.text-capitalize.text-center manager location
+                th.text-capitalize.text-center job family group
+                th.text-capitalize.text-center superior organization
+                th.text-capitalize.text-center.none supervisory reference id
+                th.text-capitalize.text-center.none supervisory organization
+                th.text-capitalize.text-center.none manager full name
+                th.text-capitalize.text-center.none manager full legal name
+                th.text-capitalize.text-center.none job family
+                th.text-capitalize.text-center.none location
+                th.text-capitalize.text-center.none email
+                th.text-capitalize.text-center.none user type
+            tbody
+              include _users

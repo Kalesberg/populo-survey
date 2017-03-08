@@ -1,0 +1,38 @@
+extends ../submission
+
+block content
+  #wrapper.container-fluid
+    .row
+      .col-md-12
+        .survey-wrapper
+          .s-header.text-center
+            img(src='/img/populo-logo.svg', alt='populo logo')
+          h4.submission-text.text-center
+            | Thank you for responding to the Populo growth survey.
+            | You will receive an email notification once your report is available.
+            | You can then use the report to create your growth plan.
+          .text-center.redirect-text
+            | You will be redirected in 5 seconds or please click here to go to your 
+            a(href='/dashboard') dashboard
+  footer.global.fixed.navbar.navbar-default
+    .col-md-12.text-center.hidden-xs
+      span ©Copyright 2015 populo
+      img.padding-5(src='/img/populo-logo.svg')
+      ul.list-inline
+        li
+          a(href='#') Terms
+        li
+          a(href='#') Privacy
+    .visible-xs
+      .col-xs-12.collapse-header.text-center
+        a(href='#legal-links', data-toggle='collapse', aria-expanded='false', aria-controls='legal-links')
+          img(src='/img/collapse-icon.svg', width='20', height='20', alt='collapse icon')
+      #legal-links.collapse
+        .col-xs-12.text-center
+          ul.list-group
+            li
+              a(href='#') Terms
+            li
+              a(href='#') Privacy
+      .col-xs-12.text-center
+        img.padding-5(src='/img/populo-logo.svg')

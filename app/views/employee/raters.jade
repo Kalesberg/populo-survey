@@ -1,0 +1,143 @@
+extends ../application
+
+block variables
+  - var css_files = ['/css/lib/jquery.dataTables.min.css', '/css/lib/responsive.dataTables.min.css', '/css/lib/jquery.mCustomScrollbar.min.css', '/css/layout.css', '/css/multi-raters.css', 'https://fonts.googleapis.com/css?family=Open+Sans:400,700']
+  - var js_files = ['/js/libraries/jquery.dataTables.min.js', '/js/libraries/dataTables.responsive.min.js', '/js/libraries/jquery.mCustomScrollbar.concat.min.js', '/js/multi-raters.js']
+
+block content
+  #wrapper.container-fluid
+    .row
+      .col-md-12
+        .panel-wrapper
+          .panel.panel-default
+            .panel-heading
+              span.panel-title
+                img(src='/img/m-r-icon-blue.svg', width='35', height='35', alt='insights icon')
+                if approvalStep
+                  | Review and approve multi-raters for your team
+                else
+                  | Select raters for your growth survey
+              span.panel-icon.pull-right(data-toggle='collapse', data-target='#info-wrapper')
+                img(src='/img/collapse-icon.svg', width='20', height='20', alt='collapse icon')
+                             
+            #info-wrapper.panel-body.collapse.in
+              .panel-content
+                .avatar.center-block.avatar-border
+                  img(src='#{userRater.avatar}')
+                .profile-name.text-center 
+                  if approvalStep
+                    - var infoTxt = 'is seeking approval for multi-raters.'
+                  else if user.role == 'Leader' || user.role == 'HR Manager'
+                    - var infoTxt = 'Please select multi-raters.'
+                  else
+                    - var infoTxt = 'Please select multi-raters for approval.'
+                  span.text-capitalize <strong>#{userRater.full_legal_name}, </strong>
+                    | #{infoTxt}
+                     
+        
+        form(action='/raters/#{survey._id}', method='post', id='raterForm')
+          input.hide(name='rater_id', value='#{userRater._id}')
+          input.hide(name='survey_id', value='#{survey._id}')
+          input.hide(name='survey_rater_id', value='#{surveyRaterId}')
+          input.hide(name='selectedRaters', id='selectedRaters', value='')
+          input.hide(name='role', id='role', value='#{user.role}')
+          .cards-wrapper
+            - var successMsg = ( approvalStep ? 'You approved this list of multi-raters.' : 'Your list of multi-raters has been approved.' )
+            if status == 'accepted'
+              .alert.success-msg.show #{successMsg}
+            .row
+              ul
+                each selectedRater, q_index in selectedRaters
+                  li.col-xs-6.col-md-3
+                    .card-wrapper.text-center
+                      .card-header
+                        | #{q_index+1}
+                      .c-avatar.center-block.avatar-border
+                        img(src='#{selectedRater.user.avatar}')
+                      div
+                        | <strong>#{selectedRater.user.full_legal_name}</strong>
+                      .text-capitalize
+                        | #{selectedRater.user.job_family}
+                      .switch
+                        if selectedRater.status == 'on'
+                          input.s-toggle.s-toggle-round(id='#{selectedRater.user._id}', name='#{selectedRater.user._id}|#{selectedRater._id}', type='checkbox', checked)
+                          label(for='#{selectedRater.user._id}')
+                        else
+                          input.s-toggle.s-toggle-round(id='#{selectedRater.user._id}', name='#{selectedRater.user._id}|#{selectedRater._id}', type='checkbox')
+                          label(for='#{selectedRater.user._id}')
+              
+                if status != 'accepted'      
+                  li.col-xs-6.col-md-3
+                    .card-wrapper.text-center.b-wrapper
+                      a.add-button(href='', data-toggle='modal' data-target='#addRaters')
+          
+          if status != 'accepted'
+            .action-wrapper.text-center
+              if !approvalStep && status == 'rejected'
+                .txt-area-wrapper.show
+                  textarea.form-control(placeholder='*please provide reason for disapproval', disabled) #{managerComments}
+              if approvalStep
+                .txt-area-wrapper
+                  textarea.form-control(placeholder='*please provide reason for disapproval', id='managerComments', name='managerComments') #{managerComments}
+        
+              if approvalStep
+                button.btn.btn-b.btn-reply(type='submit', name='replyBtn', value='reply', data-toggle='tooltip', data-placement='top', title='Reply')
+              if approvalStep
+                - var checkButtonTooltip = 'Approve'
+              else if user.role == 'Leader' || user.role == 'HR Manager'
+                - var checkButtonTooltip = 'Send request to multi-raters'
+              else
+                - var checkButtonTooltip = 'Submit for manager approval'
+              - var approveButtonValue = (approvalStep ? 'approve' : 'submit')
+              button.btn.btn-b.btn-approve(type='submit', name='approveBtn', value='#{approveButtonValue}', data-toggle='tooltip', data-placement='top', title='#{checkButtonTooltip}')
+        
+    //Modal
+    if status != 'accepted'
+      .modal.fade(id='addRaters', tabindex='-1', role='dialog', aria-labelledby='addRaters')
+        .modal-dialog(role='document')
+          .modal-content
+            .modal-header
+              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true')
+                  &times;
+              h4.modal-title.text-capitalize
+                img(src='/img/add-icon-b.svg', width='35', height='35', alt='insights icon') 
+                | add raters
+          
+            .modal-body
+              .form-f-wrapper
+                input.form-control(id='search-box', type='text', aria-label='...', placeholder='Search Raters')
+              .initiate-scroll.mCustomScrollbar(data-mcs-theme='gray-theme')
+                  table.display(id='add-raters-table', cellspacing='0', width='100%')
+                    thead
+                      tr
+                        th
+                        th
+                    tbody
+                      each availableRater, q_index in availableRaters
+                        tr
+                          td
+                            .avatar-wrapper-m.avatar-border
+                              img(src='/img/avatar-f-small.svg', alt='avatar')
+                            div
+                              | <strong>#{availableRater.full_legal_name}</strong>
+                              br
+                              span
+                                | #{availableRater.job_family}
+                          td.text-right
+                            .switch
+                              - var selectedUser = false
+                              - var selectedRaterId = ''
+                              each selectedRater, o_index in selectedRaters
+                                if String(selectedRater.user._id) == String(availableRater._id) && selectedRater.status == 'on'
+                                  - selectedUser = true
+                                  - selectedRaterId = selectedRater._id
+
+                              if selectedUser == true
+                                input.s-toggle.s-toggle-round(id='a-#{availableRater._id}', name='#{availableRater._id}|#{selectedRaterId}', type='checkbox', checked)
+                                label(for='a-#{availableRater._id}')
+                              else
+                                input.s-toggle.s-toggle-round(id='a-#{availableRater._id}', name='#{availableRater._id}', type='checkbox')
+                                label(for='a-#{availableRater._id}')
+
+  
